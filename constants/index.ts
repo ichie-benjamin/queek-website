@@ -255,7 +255,7 @@ export const FOOTER_LINKS = [
     {
         title: 'Learn More',
         links: [
-            'About Hilink',
+            'About Queek',
             'Press Releases',
             'Environment',
             'Jobs',
@@ -264,16 +264,16 @@ export const FOOTER_LINKS = [
         ],
     },
     {
-        title: 'Our Community',
-        links: ['Climbing xixixi', 'Hiking hilink', 'Hilink kinthill'],
+        title: 'Our Services',
+        links: ['Food & Glocery', 'Utility Payment', 'Laundry', 'Car Wash'],
     },
 ];
 
 export const FOOTER_CONTACT_INFO = {
     title: 'Contact Us',
     links: [
-        { label: 'Admin Officer', value: '123-456-7890' },
-        { label: 'Email Officer', value: 'hilink@akinthil.com' },
+        { label: 'Contact Us', value: '+2348030407060' },
+        { label: 'Email', value: 'support@queek.com.ng' },
     ],
 };
 

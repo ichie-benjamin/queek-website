@@ -1,5 +1,7 @@
 import { defineConfig, defineCollection, s } from 'velite'
-import exp from "constants";
+import rehypeSlug from "rehype-slug";
+import rehypePrettyCode from "rehype-pretty-code";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 const computedFields = <T extends { slug : string }>(data: T) => ({
     ...data,
@@ -18,6 +20,7 @@ const posts = defineCollection({
             cover: s.image().optional(),
             video: s.file().optional(), // input file relative path, output file public path.
             metadata: s.metadata().optional(),
+            tags: s.array(s.string()).optional(),
             published: s.boolean().default(true),
             body: s.mdx()
         })
@@ -36,7 +39,20 @@ export default defineConfig({
     },
     collections: { posts },
     mdx: {
-        rehypePlugins: [],
+        rehypePlugins: [
+            rehypeSlug,
+            [rehypePrettyCode, { theme: "github-dark" }],
+            [
+                rehypeAutolinkHeadings,
+                {
+                    behavior: "wrap",
+                    properties: {
+                        className: ["subheading-anchor"],
+                        ariaLabel: "Link to section",
+                    },
+                },
+            ],
+        ],
         remarkPlugins: []
     }
 })

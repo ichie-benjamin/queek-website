@@ -11,7 +11,7 @@ import FAQ from "@/components/pages/FAQ";
 export default async function DownloadPage(){
     return (
         <div className="w-full">
-            <div className="bg-section-light">
+            <div className="bg-section-light dark:bg-background">
                 <section className="max-w-[500px]  md:max-w-6xl md:px-12 mt-20- mx-auto">
                     <div
                         className="grid grid-cols-1 gap-4 justify-between items-center md:grid-cols-12 md:gap-8 px-4"
@@ -46,7 +46,7 @@ export default async function DownloadPage(){
                 </section>
             </div>
 
-            <Services />
+            {/*<Services />*/}
 
             <WhyUs1 />
 

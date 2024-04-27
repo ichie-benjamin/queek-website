@@ -9,10 +9,12 @@ const Hero = () => {
       <div className="relative z-20 flex flex-1 flex-col xl:w-1/2">
         <h1 className="bold-26 sm:bold-52">Queek: Revolutionizing Your Routine, <strong className="text-primary">Simplifying Your Life!</strong></h1>
         <p className="regular-16 mt-6 text-gray-30_ xl:max-w-[520px]">
-          Every facet of Queek is infused with the spirit of Nigeria,
-          built to cater to the unique rhythms of its people's lives.
-          We understand the value of time and quality, and our suite of services is a pledge to deliver both,
-          consistently and with a touch of excellence that Queek proudly stands for
+          Queek is on a mission to redefine convenience in Nigeria,
+          offering a comprehensive solution to simplify your daily life.
+          We are more than just a service provider –
+          we are a movement dedicated to revolutionizing the way you live. <br/>
+          Our mission is simple: to make everyday tasks effortless and to
+          enrich your experiences with unparalleled convenience.
         </p>
 
         <div className="flex mt-5 flex-col w-full gap-3 sm:flex-row">
@@ -22,7 +24,8 @@ const Hero = () => {
             title="Download App"
             variant="btn_green"
           />
-          <Button
+          <LinkButton
+              href="/business"
             type="button"
             title="Become a vendor"
             icon="/images/play.svg"

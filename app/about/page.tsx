@@ -79,9 +79,9 @@ export default async function AboutPage(){
                         </div>
                     </div>
                     <div
-                        className="md:col-span-4 lg:col-span-6 w-full flex justify-end order-1 md:order-2"
+                        className="md:col-span-4 lg:col-span-6 w-full dark:bg-background bg-section-light rounded-3xl p-4 flex justify-end order-1 md:order-2"
                     >
-                        <img src="/images/About_us.png" className="w-full md:w-auto" alt="" />
+                        <img src="/images/banner/everything.png" className="w-full md:w-auto" alt="" />
                     </div>
                 </div>
             </section>
@@ -100,8 +100,8 @@ export default async function AboutPage(){
                         >
                             <div className="md:col-span-6 lg:col-span-6 w-full flex justify-end">
                                 <img
-                                    src="/images/p/2.png"
-                                    className="min-w-40 md:w-auto"
+                                    src="/images/banner/ahead.jpg"
+                                    className="min-w-40 rounded-3xl md:w-auto"
                                     alt=""
                                 />
                             </div>
@@ -164,8 +164,12 @@ export default async function AboutPage(){
                     <div
                         className="md:col-span-4 lg:col-span-6 w-full flex justify-end order-1 md:order-2"
                     >
-                        <img src="/images/About_us.png" className="w-full md:w-auto" alt="" />
-                    </div>
+                        <div>
+                            <img src="/images/banner/business_owner.jpg" className="w-full rounded-3xl md:w-auto" alt="" />
+                            <a href="https://www.freepik.com/free-photo/front-view-smiley-woman-running-business_33752901.htm#fromView=search&page=1&position=48&uuid=40425724-696b-4c7f-9140-f08a03fce54c">Image by freepik</a>
+
+                        </div>
+                     </div>
                 </div>
             </section>
 

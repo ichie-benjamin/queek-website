@@ -134,8 +134,8 @@ export default async function ContactUsPage(){
                         >
                             <div className="md:col-span-6 lg:col-span-6 w-full flex justify-end">
                                 <img
-                                    src="/images/p/text-hala.png"
-                                    className="min-w-40 md:w-auto"
+                                    src="/images/banner/home_cleaning.jpg"
+                                    className="min-w-40 rounded-3xl md:w-auto"
                                     alt=""
                                 />
                             </div>
@@ -256,7 +256,7 @@ export default async function ContactUsPage(){
                     <div
                         className="md:col-span-4 lg:col-span-6 w-full flex justify-end order-1 md:order-2"
                     >
-                        <img src="/images/services/wash.jpeg" className="w-full rounded-3xl md:w-auto" alt="" />
+                        <img src="/images/banner/waste.jpg" className="w-full rounded-3xl md:w-auto" alt="" />
                     </div>
                 </div>
             </section>
@@ -338,7 +338,7 @@ export default async function ContactUsPage(){
                         >
                             <div className="md:col-span-6 lg:col-span-6 w-full flex justify-end">
                                 <img
-                                    src="/images/p/2.png"
+                                    src="/images/banner/smooth.png"
                                     className="min-w-40 md:w-auto"
                                     alt=""
                                 />
@@ -365,6 +365,7 @@ export default async function ContactUsPage(){
             </section>
 
 
+
             <section className="max-w-[500px] md:max-w-6xl md:px-12 mt-20 mx-auto">
                 <div
                     className="grid grid-cols-1 gap-4 justify-between items-center md:grid-cols-12 md:gap-8 px-4"
@@ -375,11 +376,11 @@ export default async function ContactUsPage(){
                         <div className="h-full sm:px-0 flex items-center">
                             <div>
                                 <h2
-                                    className="text-[28px] md:text-[32px] lg:text-4xl  font-bold"
+                                    className="text-[28px] md:text-[32px] lg:text-4xl font-bold"
                                 >
                                     Effortless Efficiency
                                 </h2>
-                                <p className="text-base my-4 font-medium ">
+                                <p className="text-base my-4 font-medium">
                                     Queek is your ticket to a smoother,
                                     more streamlined lifestyle. With the tap of your finger,
                                     you unlock a world of convenience that spans every aspect
@@ -403,10 +404,11 @@ export default async function ContactUsPage(){
                     <div
                         className="md:col-span-4 lg:col-span-6 w-full flex justify-end order-1 md:order-2"
                     >
-                        <img src="/images/About_us.png" className="w-full md:w-auto" alt="" />
+                        <img src="/images/banner/efficient.png" className="w-full md:w-auto" alt="" />
                     </div>
                 </div>
             </section>
+
 
 
             <section className="max-w-[500px] h-full md:max-w-6xl md:px-12 mt-20 mx-auto">
@@ -416,8 +418,8 @@ export default async function ContactUsPage(){
                     >
                         <div className="md:col-span-4 lg:col-span-6 w-full flex justify-end">
                             <img
-                                src="/images/our_social_impact.png"
-                                className="w-full md:w-auto"
+                                src="/images/banner/hassle-free.jpg"
+                                className="w-full rounded-3xl md:w-auto"
                                 alt=""
                             />
                         </div>
@@ -425,7 +427,7 @@ export default async function ContactUsPage(){
                             <div className="h-full sm:px-0 flex items-center">
                                 <div>
                                     <h2
-                                        className="text-[28px] md:text-[32px] lg:text-4xl  font-bold"
+                                        className="text-[28px] md:text-[32px] lg:text-4xl font-bold"
                                     >
                                         Smooth, hassle-free transactions
                                     </h2>
@@ -444,6 +446,7 @@ export default async function ContactUsPage(){
                     </div>
                 </div>
             </section>
+
 
 
             <div className="h-[100px]"></div>

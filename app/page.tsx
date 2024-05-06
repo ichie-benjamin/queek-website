@@ -39,7 +39,7 @@ export default function Home() {
                     >
                         <div className="md:col-span-6 lg:col-span-6 w-full flex justify-end">
                             <img
-                                src="/images/p/text-hala.png"
+                                src="/images/banner/everything.png"
                                 className="min-w-40 md:w-auto"
                                 alt=""
                             />
@@ -100,7 +100,7 @@ export default function Home() {
                 <div
                     className="md:col-span-4 lg:col-span-6 w-full flex justify-end order-1 md:order-2"
                 >
-                    <img src="/images/engineering.png" className="w-full md:w-auto" alt="" />
+                    <img src="/images/banner/tailored.jpg" className="w-full rounded-3xl md:w-auto" alt="" />
                 </div>
             </div>
         </section>
@@ -112,8 +112,8 @@ export default function Home() {
                 >
                     <div className="md:col-span-4 lg:col-span-6 w-full flex justify-end">
                         <img
-                            src="/images/our_social_impact.png"
-                            className="w-full md:w-auto"
+                            src="/images/banner/everyday_helper.jpg"
+                            className="w-full rounded-3xl md:w-auto"
                             alt=""
                         />
                     </div>
@@ -152,7 +152,7 @@ export default function Home() {
                     >
                         <div className="md:col-span-6 lg:col-span-6 w-full flex justify-end">
                             <img
-                                src="/images/p/2.png"
+                                src="/images/banner/smooth.png"
                                 className="min-w-40 md:w-auto"
                                 alt=""
                             />
@@ -218,7 +218,7 @@ export default function Home() {
                 <div
                     className="md:col-span-4 lg:col-span-6 w-full flex justify-end order-1 md:order-2"
                 >
-                    <img src="/images/About_us.png" className="w-full md:w-auto" alt="" />
+                    <img src="/images/banner/efficient.png" className="w-full md:w-auto" alt="" />
                 </div>
             </div>
         </section>
@@ -232,8 +232,8 @@ export default function Home() {
                 >
                     <div className="md:col-span-4 lg:col-span-6 w-full flex justify-end">
                         <img
-                            src="/images/our_social_impact.png"
-                            className="w-full md:w-auto"
+                            src="/images/banner/hassle-free.jpg"
+                            className="w-full rounded-3xl md:w-auto"
                             alt=""
                         />
                     </div>

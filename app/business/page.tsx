@@ -8,6 +8,7 @@ import ContactInfo from "@/components/pages/ContactInfo";
 import LinkButton from "@/components/LinkButton";
 import {HoverEffect} from "@/components/ui/card-hover";
 import {WHYCHOOSEUS, WHYPARTNER} from "@/constants";
+import Image from "next/image";
 export default async function BusinessPage(){
     return (
         <div className="w-full">
@@ -78,9 +79,11 @@ export default async function BusinessPage(){
                     <div
                         className="grid grid-cols-1 gap-4 justify-between items-center md:grid-cols-12 md:gap-8 px-4"
                     >
-                        <div className="md:col-span-4 lg:col-span-6 w-full flex justify-end">
-                            <img
-                                src="/images/services/wash.jpeg"
+                        <div className="md:col-span-4 bg-section-light rounded-3xl dark:bg-background p-6 lg:col-span-6 w-full flex justify-end">
+                            <Image
+                                height="1000"
+                                width="800"
+                                src="/images/banner/efficient.png"
                                 className="w-full md:w-auto rounded-3xl"
                                 alt=""
                             />
@@ -114,8 +117,8 @@ export default async function BusinessPage(){
                         >
                             <div className="md:col-span-6 lg:col-span-6 w-full flex justify-end">
                                 <img
-                                    src="/images/p/2.png"
-                                    className="min-w-40 md:w-auto"
+                                    src="/images/banner/partnership.jpg"
+                                    className="min-w-40 rounded-3xl md:w-auto"
                                     alt=""
                                 />
                             </div>
@@ -172,7 +175,7 @@ export default async function BusinessPage(){
                     <div
                         className="md:col-span-4 lg:col-span-6 w-full flex justify-end order-1 md:order-2"
                     >
-                        <img src="/images/About_us.png" className="w-full md:w-auto" alt="" />
+                        <img src="/images/banner/business_owner.jpg" className="w-full rounded-3xl md:w-auto" alt="" />
                     </div>
                 </div>
             </section>

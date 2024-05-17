@@ -9,6 +9,8 @@ import LinkButton from "@/components/LinkButton";
 import {HoverEffect} from "@/components/ui/card-hover";
 import {WHYCHOOSEUS, WHYPARTNER} from "@/constants";
 import Image from "next/image";
+import {siteConfig} from "@/config/site";
+import ExternalLinkButton from "@/components/ExternalLinkButton";
 export default async function BusinessPage(){
     return (
         <div className="w-full">
@@ -33,10 +35,10 @@ export default async function BusinessPage(){
 
 
                                     <div className="flex mt-6">
-                                        <LinkButton
-                                            href="#"
+                                        <ExternalLinkButton
+                                            href={ siteConfig.vendor_signup }
                                             type="button"
-                                            title="Signup"
+                                            title="Get Started"
                                             variant="btn_green"
                                         />
                                     </div>
@@ -161,8 +163,8 @@ export default async function BusinessPage(){
                                     Don't miss out on the opportunity to reach more customers and expand your business with Queek. Join us today and become part of our growing community of vendors committed to delivering excellence to our customers.
                                 </p>
                                 <div className="flex mt-6">
-                                    <LinkButton
-                                        href="#"
+                                    <ExternalLinkButton
+                                        href={ siteConfig.vendor_signup }
                                         type="button"
                                         title="Get Started"
                                         variant="btn_green"

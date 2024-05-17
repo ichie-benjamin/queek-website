@@ -8,6 +8,7 @@ import {Providers} from "@/components/providers";
 import SiteFooter from "@/components/site-footer";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Script from 'next/script'
 
 const inter = Inter({ subsets: ["latin"], variable : "--font-sans" });
 
@@ -38,7 +39,10 @@ export default function RootLayout({
           {/*</div>*/}
       </Providers>
 
+
+
       </body>
+
     </html>
   );
 }

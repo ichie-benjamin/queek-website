@@ -272,7 +272,7 @@ export const FOOTER_LINKS = [
 export const FOOTER_CONTACT_INFO = {
     title: 'Contact Us',
     links: [
-        { label: 'Contact Us', value: '+2348030407060' },
+        { label: 'Contact Us', value: '+2349014412477' },
         { label: 'Email', value: 'support@queek.com.ng' },
     ],
 };

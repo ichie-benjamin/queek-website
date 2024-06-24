@@ -284,6 +284,5 @@ export const SOCIALS = {
         '/images/instagram.svg',
         '/images/twitter.svg',
         '/images/youtube.svg',
-        '/images/wordpress.svg',
     ],
 };

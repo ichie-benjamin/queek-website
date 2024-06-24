@@ -18,7 +18,6 @@ export function SiteHeader(){
         <header className="z-40 sticky top-0 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container justify-between flex py-2 max-w-screen-2xl items-center">
                 <Link href="/" className="mr-6 flex items-center space-x-2">
-                    <Icons.logo className="h-6 w-6" />
                     <span className="font-bold">{siteConfig.name}</span>
                 </Link>
 

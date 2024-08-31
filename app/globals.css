@@ -257,3 +257,58 @@ body {
 .bg-section-light {
   background-color: #edf8fe;
 }
+
+
+.hero {
+  position: relative;
+  height: 70vh;
+  min-height: 80vh;
+  background-image: url('/rider/image/bg.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  text-align: center;
+  color: white;
+  padding: 1.5rem; /* Equivalent to Tailwind's p-6 */
+}
+
+.hero-title {
+  font-size: 2.25rem; /* Equivalent to Tailwind's text-4xl */
+  font-weight: bold;
+}
+
+.hero-subtitle {
+  margin-top: 1rem; /* Equivalent to Tailwind's mt-4 */
+  font-size: 1.125rem; /* Equivalent to Tailwind's text-lg */
+}
+
+@media (min-width: 768px) {
+  .hero {
+    min-height: 120vh;
+  }
+
+  .hero-title {
+    font-size: 4rem; /* Equivalent to Tailwind's md:text-6xl */
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem; /* Equivalent to Tailwind's md:text-xl */
+  }
+}
+
+
+.rider-bg {
+  background-image: url('/images/rider_bg.jpg');
+}

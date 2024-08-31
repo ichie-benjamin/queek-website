@@ -33,7 +33,7 @@ export const NAV_LINKS = [
         ] },
 
     { href: '/contact', key: 'contact_us', label: 'Contact Us' },
-    { href: '/about', key: 'about_us', label: 'About Us' },
+    { href: '/rider', key: 'rider', label: 'Rider' },
     { href: '/business', key: 'business', label: 'Business' },
 ];
 

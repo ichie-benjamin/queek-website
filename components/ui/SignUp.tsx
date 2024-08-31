@@ -9,7 +9,7 @@ import {
     IconBrandOnlyfans,
 } from "@tabler/icons-react";
 import {useAuth} from "@/hooks/auth";
-import SelectInput from "@/components/ui/SelectInput";
+// import SelectInput from "@/components/ui/SelectInput";
 
 
 const vehicles = [
@@ -47,23 +47,6 @@ export function SignupFormDemo() {
         { id: '3', name: 'Item 3' },
     ];
 
-    const handleSelect = (vehicleId) => {
-        setSelectedVehicle(vehicleId);
-    };
-
-    const submitForm = event => {
-        event.preventDefault()
-
-        register({
-            name,
-            email,
-            password,
-            password_confirmation: passwordConfirmation,
-            setErrors,
-        })
-    }
-
-    console.log(name)
 
     return (
         <div className="max-w-md mt-6 w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
@@ -112,7 +95,7 @@ export function SignupFormDemo() {
 
                 <LabelInputContainer className="mb-4">
                     <Label htmlFor="area">Area</Label>
-                <SelectInput items={items} />
+                {/*<SelectInput items={items} />*/}
                 </LabelInputContainer>
 
                 <div className="max-w-4xl mx-auto p-4">
@@ -124,7 +107,6 @@ export function SignupFormDemo() {
                                 className={`p-4 border rounded-lg cursor-pointer ${
                                     selectedVehicle === vehicle.id ? 'border-green-500' : 'border-gray-300'
                                 }`}
-                                onClick={() => handleSelect(vehicle.id)}
                             >
                                 <img src={vehicle.imageSrc} alt={vehicle.name} className="w-20 h-20 mx-auto" />
                                 <p className="text-center mt-2">{vehicle.name}</p>

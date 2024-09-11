@@ -101,14 +101,14 @@ export default function Terms() {
     ];
 
     return (
-        <div className="bg-gray-10 mb-10">
+        <div className="bg-gray-10 dark:bg-background mb-10">
             <section className="max-w-[500px] h-full md:max-w-6xl md:px-12 pt-20 mx-auto">
 
                 <h1 className="text-4xl font-bold text-center mb-8">Terms & Conditions</h1>
 
 
                 {sections.map((section, index) => (
-                    <div key={index} className="bg-white shadow-md rounded-lg p-6 mb-8">
+                    <div key={index} className="bg-white dark:bg-background shadow-md rounded-lg p-6 mb-8">
                         <h2 className="text-2xl font-semibold mb-4">{section.title}</h2>
                         <ul className="list-disc pl-5 space-y-2">
                             {section.content.map((item, itemIndex) => (
@@ -118,7 +118,7 @@ export default function Terms() {
                     </div>
                 ))}
 
-                <div className="bg-white shadow-md rounded-lg p-6">
+                <div className="bg-white dark:bg-background shadow-md rounded-lg p-6">
                     <h2 className="text-2xl font-semibold mb-4">Contact Us</h2>
                     <p>
                         For more information or to resolve issues, please contact us at <a

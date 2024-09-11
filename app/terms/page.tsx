@@ -1,182 +1,137 @@
-import LinkButton from "@/components/LinkButton";
-import {HoverEffect} from "@/components/ui/card-hover";
-import {WHYPARTNER} from "@/constants";
+
 import React from "react";
 
-export default async function AboutPage(){
+export default function Terms() {
+    const sections = [
+        {
+            title: "Welcome to Queek!",
+            content: [
+                "These terms and conditions govern your use of Queek's comprehensive service platform, which includes delivery services, online payments, and other associated services provided via our website and mobile application."
+            ]
+        },
+        {
+            title: "1. Introduction",
+            content: [
+                "These Terms govern the access to and use of services provided by Queek. By accessing and using our services, you agree to these Terms and our Privacy Policy. If you do not agree, you must cease using our services immediately."
+            ]
+        },
+        {
+            title: "2. Modifications to Terms",
+            content: [
+                "Queek reserves the right to modify these terms at any time. Such modifications will be effective immediately upon posting. Your continued use of our services after modifications are posted constitutes your binding acceptance of such changes."
+            ]
+        },
+        {
+            title: "3. Eligibility and Account Registration",
+            content: [
+                "Eligibility Criteria: You must be at least 18 years old to use Queek's services.",
+                "Account Setup: To access certain features, you must create an account providing accurate and current information. You are responsible for maintaining the confidentiality of your account and password."
+            ]
+        },
+        {
+            title: "4. Service Description",
+            content: [
+                "Queek provides a multi-faceted platform that allows users to:",
+                "Order food delivery from various restaurants.",
+                "Schedule on-demand grocery and laundry services.",
+                "Book home cleaning and car wash services.",
+                "Pay utility bills and order gas refills.",
+                "Each service is subject to specific terms which will be disclosed at the point of use."
+            ]
+        },
+        {
+            title: "5. User Responsibilities",
+            content: [
+                "Compliance: You agree to comply with all local laws regarding online conduct and acceptable content.",
+                "Content Accuracy: You are responsible for the accuracy of the data you input into the platform.",
+                "Prohibited Uses: You may not use our service for any illegal or unauthorized purpose."
+            ]
+        },
+        {
+            title: "6. Fees and Payment",
+            content: [
+                "Fees: You agree to pay the fees for services that you purchase on our platform, and you authorize us to charge your debit or credit card or process other means of payment for those fees.",
+                "Refunds: Refund policies are specified for each service offering and are incorporated into these Terms by reference."
+            ]
+        },
+        {
+            title: "7. Intellectual Property Rights",
+            content: [
+                "Ownership and Rights: All materials on Queek, including software, logos, text, graphics, and design, are the intellectual property of Queek or its licensors and are protected under copyright and intellectual property laws.",
+                "Use of Material: You agree not to copy, modify, or distribute content from Queek without explicit permission from us."
+            ]
+        },
+        {
+            title: "8. Termination and Suspension",
+            content: [
+                "Queek may terminate or suspend your access to the platform at any time, without notice, for any reason, including breach of these Terms. Upon termination, your right to use the platform will cease immediately."
+            ]
+        },
+        {
+            title: "9. Disclaimer of Warranties",
+            content: [
+                "You expressly understand and agree that your use of Queek is at your sole risk. The service is provided on an \"AS IS\" and \"AS AVAILABLE\" basis. Queek expressly disclaims all warranties of any kind, whether express or implied."
+            ]
+        },
+        {
+            title: "10. Limitation of Liability",
+            content: [
+                "To the maximum extent permitted by applicable law, Queek shall not be liable for any indirect, incidental, special, consequential or punitive damages resulting from your access to or use of, or inability to access or use the services."
+            ]
+        },
+        {
+            title: "11. Governing Law and Dispute Resolution",
+            content: [
+                "These terms shall be governed by the laws of the Federal Republic of Nigeria. Any disputes arising from these terms will be resolved through final and binding arbitration under the rules of arbitration of the Nigerian Arbitration Association."
+            ]
+        },
+        {
+            title: "12. General Provisions",
+            content: [
+                "Entire Agreement: These Terms constitute the entire agreement between you and Queek regarding your use of the platform.",
+                "No Waiver: The failure of Queek to enforce any right or provision of these Terms will not be deemed a waiver of such right or provision."
+            ]
+        },
+        {
+            title: "13. Contact Information",
+            content: [
+                "If you have any questions about these Terms, please contact us at support@queek.com."
+            ]
+        }
+    ];
+
     return (
-        <div className="w-full">
-            <section className="p-4 sm:p-8  mt-5 mb-16">
-                <div className="relative max-h-[80vh] mx-auto">
-                    <img
-                        src="/images/about.png"
-                        className="relative w-full rounded-3xl max-h-[80vh] object-center"
-                        alt=""
-                    />
-                    <div
-                        className="md:h-28 md:w-56 absolute bottom-8 lg:bottom-16 left-5 lg:left-10 grid place-content-center"
-                    >
+        <div className="bg-gray-10 mb-10">
+            <section className="max-w-[500px] h-full md:max-w-6xl md:px-12 pt-20 mx-auto">
+
+                <h1 className="text-4xl font-bold text-center mb-8">Terms & Conditions</h1>
+
+
+                {sections.map((section, index) => (
+                    <div key={index} className="bg-white shadow-md rounded-lg p-6 mb-8">
+                        <h2 className="text-2xl font-semibold mb-4">{section.title}</h2>
+                        <ul className="list-disc pl-5 space-y-2">
+                            {section.content.map((item, itemIndex) => (
+                                <li key={itemIndex}>{item}</li>
+                            ))}
+                        </ul>
                     </div>
+                ))}
+
+                <div className="bg-white shadow-md rounded-lg p-6">
+                    <h2 className="text-2xl font-semibold mb-4">Contact Us</h2>
+                    <p>
+                        For more information or to resolve issues, please contact us at <a
+                        href="mailto:support@queek.com" className="text-blue-600 hover:underline">support@queek.com</a>.
+                        We are dedicated to improving your experience and addressing your concerns.
+                    </p>
                 </div>
+
+
+
             </section>
-
-
-
-            <section className="max-w-[500px] h-full md:max-w-6xl md:px-12 mt-20 mx-auto">
-                <div className="grid place-content-center h-full w-full">
-                    <div
-                        className="flex  px-4"
-                    >
-                        <div className="mx-auto px-5">
-                            <div className="h-full sm:px-0 flex items-center">
-                                <div>
-                                    <h2
-                                        className="text-[28px] md:text-[32px] lg:text-4xl font-bold"
-                                    >
-                                        About us
-                                    </h2>
-                                    <p className="text-base my-4 font-medium">
-                                        Queek is on a mission to redefine convenience in Nigeria,
-                                        offering a comprehensive solution to simplify and elevate your daily life.<br/>
-                                        At Queek, we are not just a service provider
-                                        –we are a movement dedicated to <strong>revolutionizing the way you live your life</strong>.
-                                        <br/>Our mission is simple: to make everyday
-                                        tasks effortless and to enrich your experiences with unparalleled convenience.
-                                        <br/>Our vision is to create the everything app' for the region, making it effortless for you to move around, order food and groceries, manage payments, and more – all from one powerful platform.
-
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-
-
-            <section className="max-w-[500px] md:max-w-6xl md:px-12 mt-20 mx-auto">
-                <div
-                    className="grid grid-cols-1 gap-4 justify-between items-center md:grid-cols-12 md:gap-8 px-4"
-                >
-                    <div
-                        className="md:col-span-8 lg:col-span-6 order-2 md:order-1 w mx-auto px-5"
-                    >
-                        <div className="h-full sm:px-0 flex items-center">
-                            <div>
-                                <h2
-                                    className="text-[28px] md:text-[32px] lg:text-4xl font-bold"
-                                >
-                                    Our Purpose
-                                </h2>
-                                <p className="text-base my-4 font-medium">
-                                    Queek is driven by a powerful purpose – to simplify and elevate the lives of people in Nigeria.
-                                    We are here to make a positive impact by providing innovative
-                                    solutions that empower individuals and communities to thrive.
-                                </p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        className="md:col-span-4 lg:col-span-6 w-full dark:bg-background bg-section-light rounded-3xl p-4 flex justify-end order-1 md:order-2"
-                    >
-                        <img src="/images/banner/everything.png" className="w-full md:w-auto" alt="" />
-                    </div>
-                </div>
-            </section>
-
-
-
-
-
-            <section
-                className="bg-section mt-14"
-            >
-                <section className="max-w-[500px] h-full md:max-w-6xl md:px-12 mt-6 mx-auto">
-                    <div className="grid place-content-center h-full w-full">
-                        <div
-                            className="grid grid-cols-1 gap-4 justify-between items-center md:grid-cols-12 md:gap-8 px-4"
-                        >
-                            <div className="md:col-span-6 lg:col-span-6 w-full flex justify-end">
-                                <img
-                                    src="/images/banner/ahead.jpg"
-                                    className="min-w-40 rounded-3xl md:w-auto"
-                                    alt=""
-                                />
-                            </div>
-                            <div className="md:col-span-6 lg:col-span-6 w mx-auto px-5">
-                                <div className="h-full sm:px-0 flex items-center">
-                                    <div>
-                                        <h2
-                                            className="text-[28px] md:text-[32px] lg:text-4xl text-white font-bold"
-                                        >
-                                            Looking Ahead
-                                        </h2>
-                                        <p className="text-base my-4 font-medium text-white">
-
-
-                                            As we look to the future, Queek is committed to pushing the
-                                            boundaries of innovation and exploring new opportunities for growth.
-                                            With the support of our partners and the dedication of our team,
-                                            we are confident that we can continue to redefine
-                                            convenience and enrich the lives of millions across the Middle East.
-                                        </p>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </section>
-
-
-            <section className="max-w-[500px] md:max-w-6xl md:px-12 mt-20 mx-auto">
-                <div
-                    className="grid grid-cols-1 gap-4 justify-between items-center md:grid-cols-12 md:gap-8 px-4"
-                >
-                    <div
-                        className="md:col-span-8 lg:col-span-6 order-2 md:order-1 w mx-auto px-5"
-                    >
-                        <div className="h-full sm:px-0 flex items-center">
-                            <div>
-                                <h2
-                                    className="text-[28px] md:text-[32px] lg:text-4xl font-bold"
-                                >
-                                    Are you a business owner?
-                                </h2>
-                                <p className="text-base my-4 font-medium">
-                                    Don't miss out on the opportunity to reach more customers and expand your business with Queek. Join us today and become part of our growing community of vendors committed to delivering excellence to our customers.
-                                </p>
-                                <div className="flex mt-6">
-                                    <LinkButton
-                                        href="#"
-                                        type="button"
-                                        title="Get Started"
-                                        variant="btn_green"
-                                    />
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        className="md:col-span-4 lg:col-span-6 w-full flex justify-end order-1 md:order-2"
-                    >
-                        <div>
-                            <img src="/images/banner/business_owner.jpg" className="w-full rounded-3xl md:w-auto" alt="" />
-                            <a href="https://www.freepik.com/free-photo/front-view-smiley-woman-running-business_33752901.htm#fromView=search&page=1&position=48&uuid=40425724-696b-4c7f-9140-f08a03fce54c">Image by freepik</a>
-
-                        </div>
-                     </div>
-                </div>
-            </section>
-
-
 
             <div className="h-[100px]"></div>
-
         </div>
-    )
+    );
 }

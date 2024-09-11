@@ -233,7 +233,7 @@ export const WHYUS = [
         description: 'We’ll only need 30-40 minutes to get your product into your customer’s hands.',
         icon: '/images/clock.png',
      },
-{
+    {
         title: 'Reliable delivery riders',
         id: 'reliable_delivery_riders',
         description: 'Queek’s advanced mapping and dispatching tech ' +

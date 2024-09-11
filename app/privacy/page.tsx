@@ -1,182 +1,106 @@
-import LinkButton from "@/components/LinkButton";
-import {HoverEffect} from "@/components/ui/card-hover";
-import {WHYPARTNER} from "@/constants";
+
 import React from "react";
 
-export default async function AboutPage(){
+export default function PrivacyPolicy() {
+    const sections = [
+        {
+            title: "Introduction",
+            content: [
+                "At Queek, we respect your privacy and are committed to protecting your personal information. This privacy policy explains how we collect, use, and share your personal information when you use our app."
+            ]
+        },
+        {
+            title: "What We Collect",
+            content: [
+                "We collect the following types of personal information:",
+                "Account Information: When you create an account with us, we collect your name, email address, phone number, and password.",
+                "Location Information: We collect your location information to provide you with services that are relevant to your area.",
+                "Order Information: When you place an order through our app, we collect information about the services you have ordered, including the type of service, the date and time of the order, and any other relevant details.",
+                "Payment Information: We collect payment information, such as your credit card details, to process your payments.",
+                "Device Information: We collect information about the device you use to access our app, including the device type, operating system, and browser type."
+            ]
+        },
+        {
+            title: "How We Use Your Information",
+            content: [
+                "We use your personal information to:",
+                "Provide Our Services: We use your information to provide you with the services you have requested, including food delivery, grocery shopping, laundry services, car wash, bill payments, gas refill, and more.",
+                "Improve Our Services: We use your information to improve our services, including by analyzing your usage patterns and preferences.",
+                "Communicate with You: We use your information to communicate with you about your orders, including sending you updates and notifications.",
+                "Personalize Your Experience: We use your information to personalize your experience on our app, including by recommending services that may be of interest to you."
+            ]
+        },
+        {
+            title: "Who We Share Your Information With",
+            content: [
+                "We share your personal information with:",
+                "Service Providers: We share your information with our service providers, including local businesses and third-party logistics providers, to provide you with the services you have requested.",
+                "Payment Processors: We share your payment information with our payment processors to process your payments.",
+                "Analytics Providers: We share your information with our analytics providers to analyze your usage patterns and preferences."
+            ]
+        },
+        {
+            title: "Your Rights",
+            content: [
+                "You have the following rights:",
+                "Access: You have the right to access your personal information and to request a copy of your personal information.",
+                "Correction: You have the right to correct any inaccuracies in your personal information.",
+                "Deletion: You have the right to request that we delete your personal information.",
+                "Objection: You have the right to object to our processing of your personal information."
+            ]
+        },
+        {
+            title: "Security",
+            content: [
+                "We take the security of your personal information seriously and have implemented appropriate technical and organizational measures to protect your information from unauthorized access, disclosure, or use."
+            ]
+        },
+        {
+            title: "Changes to This Policy",
+            content: [
+                "We may update this privacy policy from time to time. If we make any changes, we will notify you by posting the updated policy on our app."
+            ]
+        },
+        {
+            title: "Contact Us",
+            content: [
+                "If you have any questions or concerns about this privacy policy, please contact us at [insert contact information]."
+            ]
+        }
+    ];
+
     return (
-        <div className="w-full">
-            <section className="p-4 sm:p-8  mt-5 mb-16">
-                <div className="relative max-h-[80vh] mx-auto">
-                    <img
-                        src="/images/about.png"
-                        className="relative w-full rounded-3xl max-h-[80vh] object-center"
-                        alt=""
-                    />
-                    <div
-                        className="md:h-28 md:w-56 absolute bottom-8 lg:bottom-16 left-5 lg:left-10 grid place-content-center"
-                    >
+        <div className="bg-gray-10 mb-10">
+            <section className="max-w-[500px] h-full md:max-w-6xl md:px-12 pt-20 mx-auto">
+
+                <h1 className="text-4xl font-bold text-center mb-8">Privacy Policy</h1>
+
+
+                {sections.map((section, index) => (
+                    <div key={index} className="bg-white shadow-md rounded-lg p-6 mb-8">
+                        <h2 className="text-2xl font-semibold mb-4">{section.title}</h2>
+                        <ul className="list-disc pl-5 space-y-2">
+                            {section.content.map((item, itemIndex) => (
+                                <li key={itemIndex}>{item}</li>
+                            ))}
+                        </ul>
                     </div>
+                ))}
+
+                <div className="bg-white shadow-md rounded-lg p-6">
+                    <h2 className="text-2xl font-semibold mb-4">Contact Us</h2>
+                    <p>
+                        For more information or to resolve issues, please contact us at <a
+                        href="mailto:support@queek.com" className="text-blue-600 hover:underline">support@queek.com</a>.
+                        We are dedicated to improving your experience and addressing your concerns.
+                    </p>
                 </div>
+
+
+
             </section>
-
-
-
-            <section className="max-w-[500px] h-full md:max-w-6xl md:px-12 mt-20 mx-auto">
-                <div className="grid place-content-center h-full w-full">
-                    <div
-                        className="flex  px-4"
-                    >
-                        <div className="mx-auto px-5">
-                            <div className="h-full sm:px-0 flex items-center">
-                                <div>
-                                    <h2
-                                        className="text-[28px] md:text-[32px] lg:text-4xl font-bold"
-                                    >
-                                        About us
-                                    </h2>
-                                    <p className="text-base my-4 font-medium">
-                                        Queek is on a mission to redefine convenience in Nigeria,
-                                        offering a comprehensive solution to simplify and elevate your daily life.<br/>
-                                        At Queek, we are not just a service provider
-                                        –we are a movement dedicated to <strong>revolutionizing the way you live your life</strong>.
-                                        <br/>Our mission is simple: to make everyday
-                                        tasks effortless and to enrich your experiences with unparalleled convenience.
-                                        <br/>Our vision is to create the everything app' for the region, making it effortless for you to move around, order food and groceries, manage payments, and more – all from one powerful platform.
-
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-
-
-            <section className="max-w-[500px] md:max-w-6xl md:px-12 mt-20 mx-auto">
-                <div
-                    className="grid grid-cols-1 gap-4 justify-between items-center md:grid-cols-12 md:gap-8 px-4"
-                >
-                    <div
-                        className="md:col-span-8 lg:col-span-6 order-2 md:order-1 w mx-auto px-5"
-                    >
-                        <div className="h-full sm:px-0 flex items-center">
-                            <div>
-                                <h2
-                                    className="text-[28px] md:text-[32px] lg:text-4xl font-bold"
-                                >
-                                    Our Purpose
-                                </h2>
-                                <p className="text-base my-4 font-medium">
-                                    Queek is driven by a powerful purpose – to simplify and elevate the lives of people in Nigeria.
-                                    We are here to make a positive impact by providing innovative
-                                    solutions that empower individuals and communities to thrive.
-                                </p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        className="md:col-span-4 lg:col-span-6 w-full dark:bg-background bg-section-light rounded-3xl p-4 flex justify-end order-1 md:order-2"
-                    >
-                        <img src="/images/banner/everything.png" className="w-full md:w-auto" alt="" />
-                    </div>
-                </div>
-            </section>
-
-
-
-
-
-            <section
-                className="bg-section mt-14"
-            >
-                <section className="max-w-[500px] h-full md:max-w-6xl md:px-12 mt-6 mx-auto">
-                    <div className="grid place-content-center h-full w-full">
-                        <div
-                            className="grid grid-cols-1 gap-4 justify-between items-center md:grid-cols-12 md:gap-8 px-4"
-                        >
-                            <div className="md:col-span-6 lg:col-span-6 w-full flex justify-end">
-                                <img
-                                    src="/images/banner/ahead.jpg"
-                                    className="min-w-40 rounded-3xl md:w-auto"
-                                    alt=""
-                                />
-                            </div>
-                            <div className="md:col-span-6 lg:col-span-6 w mx-auto px-5">
-                                <div className="h-full sm:px-0 flex items-center">
-                                    <div>
-                                        <h2
-                                            className="text-[28px] md:text-[32px] lg:text-4xl text-white font-bold"
-                                        >
-                                            Looking Ahead
-                                        </h2>
-                                        <p className="text-base my-4 font-medium text-white">
-
-
-                                            As we look to the future, Queek is committed to pushing the
-                                            boundaries of innovation and exploring new opportunities for growth.
-                                            With the support of our partners and the dedication of our team,
-                                            we are confident that we can continue to redefine
-                                            convenience and enrich the lives of millions across the Middle East.
-                                        </p>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </section>
-
-
-            <section className="max-w-[500px] md:max-w-6xl md:px-12 mt-20 mx-auto">
-                <div
-                    className="grid grid-cols-1 gap-4 justify-between items-center md:grid-cols-12 md:gap-8 px-4"
-                >
-                    <div
-                        className="md:col-span-8 lg:col-span-6 order-2 md:order-1 w mx-auto px-5"
-                    >
-                        <div className="h-full sm:px-0 flex items-center">
-                            <div>
-                                <h2
-                                    className="text-[28px] md:text-[32px] lg:text-4xl font-bold"
-                                >
-                                    Are you a business owner?
-                                </h2>
-                                <p className="text-base my-4 font-medium">
-                                    Don't miss out on the opportunity to reach more customers and expand your business with Queek. Join us today and become part of our growing community of vendors committed to delivering excellence to our customers.
-                                </p>
-                                <div className="flex mt-6">
-                                    <LinkButton
-                                        href="#"
-                                        type="button"
-                                        title="Get Started"
-                                        variant="btn_green"
-                                    />
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        className="md:col-span-4 lg:col-span-6 w-full flex justify-end order-1 md:order-2"
-                    >
-                        <div>
-                            <img src="/images/banner/business_owner.jpg" className="w-full rounded-3xl md:w-auto" alt="" />
-                            <a href="https://www.freepik.com/free-photo/front-view-smiley-woman-running-business_33752901.htm#fromView=search&page=1&position=48&uuid=40425724-696b-4c7f-9140-f08a03fce54c">Image by freepik</a>
-
-                        </div>
-                     </div>
-                </div>
-            </section>
-
-
 
             <div className="h-[100px]"></div>
-
         </div>
-    )
+    );
 }

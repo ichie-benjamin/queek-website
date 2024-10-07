@@ -54,7 +54,7 @@ export const SERVICES =  [
     { href: '/', key: 'utility_payment',
         image : "/images/services/pay_bill.jpeg",
         label: 'Utility Payments',
-        items : ['Airtime','Data','Electricity','Betting','and more ...'],
+        items : ['Airtime','Data','Electricity','and more ...'],
         description : "Queek BillPay makes settling bills swift, secure, and hassle-free. From airtime to water bills, manage all your payments effortlessly."
     },
 

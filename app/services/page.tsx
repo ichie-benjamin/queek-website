@@ -180,7 +180,7 @@ export default async function ContactUsPage(){
                                 <p className="text-base my-4 font-medium">
                                     Queek BillPay simplifies the process of paying your utility bills,
                                     allowing you to settle your payments with ease.
-                                    Whether it's electricity, airtime, data, internet, betting, or TV subscriptions,
+                                    Whether it's electricity, airtime, data, internet, or TV subscriptions,
                                     Queek BillPay ensures that your payments are processed securely and on time.
                                 </p>
                             </div>

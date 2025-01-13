@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import { MapPin, Clock } from 'lucide-react';
+import { Clock } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Vendor } from '@/constants/types/vendor';

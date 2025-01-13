@@ -1,10 +1,7 @@
 
 import React from "react";
-import DownloadApp from "@/components/DownloadApp";
 import WhyUs1 from "@/components/pages/WhyUs1";
-import Services from "@/components/pages/Services";
 import FAQ from "@/components/pages/FAQ";
-import ContactInfo from "@/components/pages/ContactInfo";
 import LinkButton from "@/components/LinkButton";
 export default async function ContactUsPage(){
     return (
@@ -19,10 +16,10 @@ export default async function ContactUsPage(){
                         >
                             <div className="h-full sm:px-0 flex items-center">
                                 <div>
-                                    <h1 className="bold-26 sm:bold-52">Welcome to <strong className="text-primary">Queek's Services </strong></h1>
+                                    <h1 className="bold-26 sm:bold-52">Welcome to <strong className="text-primary">Queek&apos;s Services </strong></h1>
 
                                     <p className="text-base my-4 font-medium">
-                                        At Queek, we pride ourselves on offering a wide array of services designed to simplify and enhance every aspect of your life. From transportation to home maintenance, and from grocery delivery to utility payments, we've got you covered.
+                                        At Queek, we pride ourselves on offering a wide array of services designed to simplify and enhance every aspect of your life. From transportation to home maintenance, and from grocery delivery to utility payments, we&apos;ve got you covered.
                                         Explore our diverse range of services below:
                                     </p>
 
@@ -65,8 +62,8 @@ export default async function ContactUsPage(){
                                     Food Delivery
                                 </h2>
                                 <p className="text-base my-4 font-medium">
-                                    Queek's Food Delivery service brings the best of local and fast
-                                    food straight to your door. Whether you're craving a burger,
+                                    Queek&apos;s Food Delivery service brings the best of local and fast
+                                    food straight to your door. Whether you&apos;re craving a burger,
                                     a hearty bowl of local soup, or a mouth-watering plate of bole,
                                     our network of delivery partners has you covered.
                                     Simply browse our extensive menu, place your order,
@@ -112,7 +109,7 @@ export default async function ContactUsPage(){
                                         Grocery Delivery
                                     </h2>
                                     <p className="text-base my-4 font-medium">
-                                        Queek's Grocery Delivery service makes grocery shopping a breeze.
+                                        Queek&apos;s Grocery Delivery service makes grocery shopping a breeze.
                                         With access to the best supermarkets in town,
                                         you can order all your essential groceries with just a
                                         few clicks. Whether you need fresh produce, or household items, our dedicated shoppers will handpick
@@ -180,7 +177,7 @@ export default async function ContactUsPage(){
                                 <p className="text-base my-4 font-medium">
                                     Queek BillPay simplifies the process of paying your utility bills,
                                     allowing you to settle your payments with ease.
-                                    Whether it's electricity, airtime, data, internet, or TV subscriptions,
+                                    Whether it&apos;s electricity, airtime, data, internet, or TV subscriptions,
                                     Queek BillPay ensures that your payments are processed securely and on time.
                                 </p>
                             </div>
@@ -217,7 +214,7 @@ export default async function ContactUsPage(){
                                         Delivery Service
                                     </h2>
                                     <p className="text-base my-4 font-medium">
-                                        Shop, send or receive from anywhere with Queek's delivery service.
+                                        Shop, send or receive from anywhere with Queek&apos;s delivery service.
                                         Simply select the items you need from your
                                         favorite stores or initiate a pickup and our team will take care of
                                         the rest, ensuring that your purchases / items are delivered promptly to your doorstep.
@@ -245,7 +242,7 @@ export default async function ContactUsPage(){
                                     Waste Disposal
                                 </h2>
                                 <p className="text-base my-4 font-medium">
-                                    Queek's Waste Disposal Service offers tailored solutions for
+                                    Queek&apos;s Waste Disposal Service offers tailored solutions for
                                     efficient and environmentally responsible waste management.
                                     From residential to commercial and industrial clients, we ensure reliable and
                                     sustainable disposal solutions for all your waste management needs.
@@ -386,7 +383,7 @@ export default async function ContactUsPage(){
                                     you unlock a world of convenience that spans every aspect
                                     of daily living. From ordering groceries to scheduling
                                     a home cleaning, arranging a car wash, or even settling
-                                    utility bills, Queek's empowers you to
+                                    utility bills, Queek&apos;s empowers you to
                                     effortlessly tackle your to-do list.
                                 </p>
                                 <div className="flex mt-6">

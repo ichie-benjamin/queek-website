@@ -1,17 +1,11 @@
 
 import React from "react";
-import DownloadApp from "@/components/DownloadApp";
-import WhyUs1 from "@/components/pages/WhyUs1";
-import Services from "@/components/pages/Services";
-import FAQ from "@/components/pages/FAQ";
-import ContactInfo from "@/components/pages/ContactInfo";
-import LinkButton from "@/components/LinkButton";
+
 import {HoverEffect} from "@/components/ui/card-hover";
-import {WHYCHOOSEUS, WHYPARTNER} from "@/constants";
+import {WHYPARTNER} from "@/constants";
 import Image from "next/image";
 import {siteConfig} from "@/config/site";
 import ExternalLinkButton from "@/components/ExternalLinkButton";
-import SignUpForm from "@/components/pages/Rider/SignUpForm";
 import {SignupFormDemo} from "@/components/ui/SignUp";
 export default async function Page(){
     return (
@@ -59,7 +53,7 @@ export default async function Page(){
                             <h2 className="bold-26 sm:bold-52"><strong className="text-primary">Why Partner with Queek</strong></h2>
 
                             <p className="mt-4 text-center mb-6">
-                                Discover why Queek is the solution you've been searching for with these compelling reasons to make it your go-to service platform.
+                                Discover why Queek is the solution you&apos;ve been searching for with these compelling reasons to make it your go-to service platform.
                             </p>
                         </div>
                     </div>
@@ -94,7 +88,7 @@ export default async function Page(){
                                             Flexible Solutions
                                         </h2>
                                         <p className="text-base my-4 font-medium ">
-                                            Whether you're a restaurant, grocery store, service provider, or retailer, Queek offers flexible solutions tailored to your specific needs. We'll work with you to create a customized plan that aligns with your business goals and objectives.
+                                            Whether you&apos;re a restaurant, grocery store, service provider, or retailer, Queek offers flexible solutions tailored to your specific needs. We&apos;ll work with you to create a customized plan that aligns with your business goals and objectives.
                                         </p>
                                     </div>
                                 </div>
@@ -155,7 +149,7 @@ export default async function Page(){
                                         Ready to Grow Your Business?
                                     </h2>
                                     <p className="text-base my-4 font-medium ">
-                                        Don't miss out on the opportunity to reach more customers and expand your business with Queek. Join us today and become part of our growing community of vendors committed to delivering excellence to our customers.
+                                        Don&apos;t miss out on the opportunity to reach more customers and expand your business with Queek. Join us today and become part of our growing community of vendors committed to delivering excellence to our customers.
                                     </p>
                                     <div className="flex mt-6">
                                         <ExternalLinkButton

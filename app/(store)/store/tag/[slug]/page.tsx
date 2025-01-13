@@ -1,10 +1,6 @@
 import React, {Suspense, use} from 'react';
-import { Search } from 'lucide-react';
-import { Input } from "@/components/ui/input";
 import ServiceSidebar from "@/components/store/ServiceSidebar";
 import {endpoints} from "@/constants/endpoints";
-import {VendorGrid} from "@/components/store/vendor/VendorGrid";
-import {Header} from "@/components/store/layout/Header";
 import {VendorSkeletonList} from "@/components/store/vendor/VendorSkeletonList";
 import {VendorGridList} from "@/components/store/vendor/VendorGridList";
 import {SearchVendors} from "@/components/store/vendor/SearchVendors";

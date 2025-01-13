@@ -1,6 +1,5 @@
 
 import React from 'react'
-import Button from "@/components/Button";
 import ExternalLinkButton from "@/components/ExternalLinkButton";
 import {siteConfig} from "@/config/site";
 

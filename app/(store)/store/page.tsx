@@ -1,7 +1,6 @@
 
 
 import React, {Suspense} from 'react';
-import {Header} from "@/components/store/layout/Header";
 import {Categories} from "@/components/store/home/Categories";
 import {Promotions} from "@/components/store/home/Promotions";
 

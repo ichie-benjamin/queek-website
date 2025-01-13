@@ -11,38 +11,38 @@ const APP_STORE_URL = 'https://apps.apple.com/app/queek-the-everything-app/id669
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.queekng.app';
 
 export default async function DownloadPage(){
-
-    useEffect(() => {
-        // Function to detect iOS devices
-        const isIOS = (): boolean => {
-            if (typeof window === 'undefined') return false;
-            const userAgent = window.navigator.userAgent.toLowerCase();
-            console.log('isIOS', userAgent)
-            return /iphone|ipad|ipod/.test(userAgent);
-        };
-
-        // Function to detect Android devices
-        const isAndroid = (): boolean => {
-            if (typeof window === 'undefined') return false;
-            const userAgent = window.navigator.userAgent.toLowerCase();
-            console.log('isAndroid', userAgent)
-
-            return /android/.test(userAgent);
-        };
-
-        // Function to handle the redirect
-        const handleRedirect = (): void => {
-            if (isIOS()) {
-                window.location.href = APP_STORE_URL;
-            } else if (isAndroid()) {
-                window.location.href = PLAY_STORE_URL;
-            }
-            // If neither, user stays on this page
-        };
-
-        // Only run on client side
-        handleRedirect();
-    }, []);
+    //
+    // useEffect(() => {
+    //     // Function to detect iOS devices
+    //     const isIOS = (): boolean => {
+    //         if (typeof window === 'undefined') return false;
+    //         const userAgent = window.navigator.userAgent.toLowerCase();
+    //         console.log('isIOS', userAgent)
+    //         return /iphone|ipad|ipod/.test(userAgent);
+    //     };
+    //
+    //     // Function to detect Android devices
+    //     const isAndroid = (): boolean => {
+    //         if (typeof window === 'undefined') return false;
+    //         const userAgent = window.navigator.userAgent.toLowerCase();
+    //         console.log('isAndroid', userAgent)
+    //
+    //         return /android/.test(userAgent);
+    //     };
+    //
+    //     // Function to handle the redirect
+    //     const handleRedirect = (): void => {
+    //         if (isIOS()) {
+    //             window.location.href = APP_STORE_URL;
+    //         } else if (isAndroid()) {
+    //             window.location.href = PLAY_STORE_URL;
+    //         }
+    //         // If neither, user stays on this page
+    //     };
+    //
+    //     // Only run on client side
+    //     handleRedirect();
+    // }, []);
 
 
 

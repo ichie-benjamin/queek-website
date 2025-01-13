@@ -3,9 +3,7 @@
 import { siteConfig } from "@/config/site";
 import {cn, logFunction} from "@/lib/utils";
 import Link from "next/link";
-import {Button, buttonVariants} from "./ui/button";
-import { Icons } from "./icons";
-import { MainNav } from "./main-nav";
+
 import { MobileNav } from "./mobile-nav";
 import { ModeToggle } from "./mode-toggle";
 

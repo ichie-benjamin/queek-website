@@ -87,7 +87,7 @@ const ServiceSidebar = () => {
             <div>
                 <Button variant="link" className="text-sm px-0 mb-2">More filters</Button>
                 <div className="space-y-2">
-                    {moreFilters.map(({ id, label, value }) => (
+                    {moreFilters.map(({ id, label }) => (
                         <Button
                             key={id}
                             variant="outline"

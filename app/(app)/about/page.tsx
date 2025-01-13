@@ -1,6 +1,5 @@
 import LinkButton from "@/components/LinkButton";
-import {HoverEffect} from "@/components/ui/card-hover";
-import {WHYPARTNER} from "@/constants";
+
 import React from "react";
 
 export default async function AboutPage(){

@@ -1,13 +1,8 @@
 
 import React from "react";
-import DownloadApp from "@/components/DownloadApp";
-import WhyUs1 from "@/components/pages/WhyUs1";
-import Services from "@/components/pages/Services";
-import FAQ from "@/components/pages/FAQ";
-import ContactInfo from "@/components/pages/ContactInfo";
-import LinkButton from "@/components/LinkButton";
+
 import {HoverEffect} from "@/components/ui/card-hover";
-import {WHYCHOOSEUS, WHYPARTNER} from "@/constants";
+import { WHYPARTNER} from "@/constants";
 import Image from "next/image";
 import {siteConfig} from "@/config/site";
 import ExternalLinkButton from "@/components/ExternalLinkButton";
@@ -27,9 +22,9 @@ export default async function BusinessPage(){
                                     <h1 className="bold-26 sm:bold-52">Join Queek <strong className="text-primary">As a vendor </strong></h1>
 
                                     <p className="text-base my-4 font-medium">
-                                        At Queek, we're committed to partnering with the best vendors to provide our
+                                        At Queek, we are committed to partnering with the best vendors to provide our
                                         customers with exceptional service and quality products.
-                                        If you're a business owner looking to expand your reach and grow your customer base,
+                                        If you are a business owner looking to expand your reach and grow your customer base,
                                         we invite you to join us as a Queek vendor.
                                     </p>
 
@@ -64,7 +59,7 @@ export default async function BusinessPage(){
                         <h2 className="bold-26 sm:bold-52"><strong className="text-primary">Why Partner with Queek</strong></h2>
 
                         <p className="mt-4 text-center mb-6">
-                            Discover why Queek is the solution you've been searching for with these compelling reasons to make it your go-to service platform.
+                            Discover why Queek is the solution you have been searching for with these compelling reasons to make it your go-to service platform.
                         </p>
                     </div>
                 </div>
@@ -99,7 +94,7 @@ export default async function BusinessPage(){
                                         Flexible Solutions
                                     </h2>
                                     <p className="text-base my-4 font-medium ">
-                                        Whether you're a restaurant, grocery store, service provider, or retailer, Queek offers flexible solutions tailored to your specific needs. We'll work with you to create a customized plan that aligns with your business goals and objectives.
+                                        Whether you are a restaurant, grocery store, service provider, or retailer, Queek offers flexible solutions tailored to your specific needs. We will work with you to create a customized plan that aligns with your business goals and objectives.
                                     </p>
                                 </div>
                             </div>
@@ -160,7 +155,7 @@ export default async function BusinessPage(){
                                     Ready to Grow Your Business?
                                 </h2>
                                 <p className="text-base my-4 font-medium ">
-                                    Don't miss out on the opportunity to reach more customers and expand your business with Queek. Join us today and become part of our growing community of vendors committed to delivering excellence to our customers.
+                                    Don&apos;t miss out on the opportunity to reach more customers and expand your business with Queek. Join us today and become part of our growing community of vendors committed to delivering excellence to our customers.
                                 </p>
                                 <div className="flex mt-6">
                                     <ExternalLinkButton

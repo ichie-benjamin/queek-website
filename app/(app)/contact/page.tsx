@@ -1,15 +1,11 @@
 "use client"
 
-import Button from "@/components/Button";
+
 import React from "react";
-import { motion } from "framer-motion";
-import { LampContainer } from "@/components/ui/lamp";
+
 import DownloadApp from "@/components/DownloadApp";
 import WhyUs1 from "@/components/pages/WhyUs1";
-import Services from "@/components/pages/Services";
 import FAQ from "@/components/pages/FAQ";
-import LinkButton from "@/components/LinkButton";
-import Image from "next/image";
 import ContactInfo from "@/components/pages/ContactInfo";
 export default async function ContactUsPage(){
     return (
@@ -22,9 +18,9 @@ export default async function ContactUsPage(){
                     <h1 className="bold-26 sm:bold-52">Contact Us: <strong className="text-primary">Get in Touch with Queek!</strong></h1>
                     <p className="regular-16 mt-6 text-gray-30_ xl:max-w-[520px]">
                         Whether you have a question, need assistance,
-                        or just want to say hello, we're here to help! <br/>
-                        At Queek, we're committed to providing exceptional customer service and ensuring that your experience with us is nothing short of excellent.
-                        Here's how you can reach out to us:
+                        or just want to say hello, we&apos;re here to help! <br/>
+                        At Queek, we are committed to providing exceptional customer service and ensuring that your experience with us is nothing short of excellent.
+                        Here is how you can reach out to us:
                     </p>
                 </div>
 
@@ -48,7 +44,7 @@ export default async function ContactUsPage(){
                                     <p className="text-base my-4 font-medium">
                                         Getting started with Queek is easy.
                                         Simply download the app from the App Store or Google Play Store,
-                                        create an account, and you're ready to go.
+                                        create an account, and you&apos;re ready to go.
                                         Join the Queek community today and experience the ultimate
                                         convenience of having everything you need right at your fingertips.
                                     </p>

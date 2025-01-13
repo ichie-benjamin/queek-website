@@ -5,10 +5,8 @@ import {cn} from "@/lib/utils";
 import {SiteHeader} from "@/components/site-header";
 import React from "react";
 import {Providers} from "@/components/providers";
-import SiteFooter from "@/components/site-footer";
-import Navbar from "@/components/Navbar";
+
 import Footer from "@/components/Footer";
-import Script from 'next/script'
 
 import Head from 'next/head';
 const inter = Inter({ subsets: ["latin"], variable : "--font-sans" });
@@ -36,11 +34,7 @@ export default function RootLayout({
       )}>
       <Providers>
           {/*<div className="relative flex min-h-dvh flex-col bg-background">*/}
-              <SiteHeader />
-              <main className="relative overflow-hidden">
-                  {children}
-              </main>
-              <Footer />
+          { children }
           {/*</div>*/}
       </Providers>
 

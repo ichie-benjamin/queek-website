@@ -1,19 +1,31 @@
 "use client"
 
 import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
+import {cn, logFunction} from "@/lib/utils";
 import Link from "next/link";
-import { buttonVariants } from "./ui/button";
+import {Button, buttonVariants} from "./ui/button";
 import { Icons } from "./icons";
 import { MainNav } from "./main-nav";
 import { MobileNav } from "./mobile-nav";
 import { ModeToggle } from "./mode-toggle";
-import Button from "@/components/Button";
+
 import React, {useState} from "react";
 import {HoveredLink, Menu, MenuItem, ProductItem} from "@/components/ui/navbar-menu";
 import {NAV_LINKS} from "@/constants";
 import {Navigation} from "@/components/navigation";
+import Image from "next/image";
+import {useAuthModal} from "@/stores/useAuthModal";
 export function SiteHeader(){
+
+    const openAuthModal = useAuthModal(state => state.open)
+
+    const openModal = () => {
+        openAuthModal(() => {
+            // This will run after successful login
+            logFunction('auth', 'Login')
+        })
+    }
+
     return (
         <header className="z-40 sticky top-0 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container justify-between flex py-2 max-w-screen-2xl items-center">
@@ -33,18 +45,22 @@ export function SiteHeader(){
                 <div className="flex flex-1_ items-center justify-end space-x-2">
                     <nav className="flex items-center">
 
-                        <Button
+
+                        <button
+                            onClick={() => openModal()}
+                            className={`flexCenter gap-3 btn_dark_green rounded-full border `}
                             type="button"
-                            title="Login"
-                            icon="/images/user.svg"
-                            variant="btn_dark_green"
-                        />
+                        >
+                            <Image src='/images/user.svg' alt={'login'} width={24} height={24} />
+                            <label className="bold-16 whitespace-nowrap cursor-pointer">Login</label>
+                        </button>
 
                         <ModeToggle />
                         <MobileNav />
                     </nav>
                 </div>
             </div>
+
         </header>
     )
 }

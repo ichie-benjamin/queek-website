@@ -1,48 +1,38 @@
-import { type ClassValue, clsx } from "clsx"
+import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
-import { Post } from "#site/content";
-import { slug } from "github-slugger";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function formatDate(input: string | number): string {
-  const date = new Date(input);
-  return date.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
+const isDev = process.env.NODE_ENV === 'development'
+
+
+export const logFunction = (tag, message) => {
+  if (isDev) {
+    console.log(tag, JSON.stringify(message,null, 2))
+  }
 }
 
-export function sortPosts(posts: Array<Post>) {
-  return posts.sort((a, b) => {
-    if (a.date > b.date) return -1;
-    if (a.date < b.date) return 1;
-    return 0;
-  });
-}
+export const getServiceName = (slug) => {
+    // Handle empty or invalid inputs
+    if (!slug || typeof slug !== 'string') {
+        return '';
+    }
 
-export function getAllTags(posts: Array<Post>) {
-  const tags: Record<string, number> = {}
-  posts.forEach(post => {
-    post.tags?.forEach(tag => {
-      tags[tag] = (tags[tag] ?? 0) + 1;
-    })
-  })
+    // Replace hyphens with spaces and split into words
+    const words = slug.split('-');
 
-  return tags;
-}
+    // Capitalize each word and handle special cases
+    const formattedWords = words.map(word => {
+        // Handle empty words that might result from multiple hyphens
+        if (!word) return '';
 
-export function sortTagsByCount(tags: Record<string, number>) {
-  return Object.keys(tags).sort((a, b) => tags[b] - tags[a])
-}
+        // Capitalize the first letter and make the rest lowercase
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    });
 
-export function getPostsByTagSlug(posts: Array<Post>, tag: string) {
-  return posts.filter(post => {
-    if (!post.tags) return false
-    const slugifiedTags = post.tags.map(tag => slug(tag))
-    return slugifiedTags.includes(tag)
-  })
-}
+    // Join the words back together with spaces
+    return formattedWords.filter(word => word).join(' ');
+};
+

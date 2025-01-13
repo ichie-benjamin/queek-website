@@ -33,7 +33,7 @@ export const NAV_LINKS = [
         ] },
 
     { href: '/contact', key: 'contact_us', label: 'Contact Us' },
-    { href: '/rider', key: 'rider', label: 'Rider' },
+    { href: '/store', key: 'store', label: 'Store' },
     { href: '/business', key: 'business', label: 'Business' },
 ];
 
@@ -286,3 +286,5 @@ export const SOCIALS = {
         '/images/youtube.svg',
     ],
 };
+
+

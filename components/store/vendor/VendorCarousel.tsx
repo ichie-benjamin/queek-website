@@ -47,7 +47,7 @@ export const VendorCarousel = ({
 
     return (
         <section className="mb-12">
-            <h2 className="text-2xl font-semibold mb-6">{title}</h2>
+            <h2 className="text-2xl font-medium mb-6">{title}</h2>
             <div className="relative">
                 <Carousel
                     opts={{

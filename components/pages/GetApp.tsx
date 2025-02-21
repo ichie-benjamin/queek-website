@@ -4,7 +4,6 @@ import React from 'react'
 
 
 import Button from './../Button'
-import Image from 'next/image'
 import {motion} from "framer-motion";
 import {LampContainer} from "@/components/ui/lamp";
 

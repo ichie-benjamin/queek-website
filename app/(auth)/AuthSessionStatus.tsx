@@ -1,4 +1,15 @@
-const AuthSessionStatus = ({ status, className, ...props }) => (
+import { HTMLProps } from 'react';
+
+interface AuthSessionStatusProps extends HTMLProps<HTMLDivElement> {
+    status?: string;
+    className?: string;
+}
+
+const AuthSessionStatus = ({
+                               status,
+                               className = '',
+                               ...props
+                           }: AuthSessionStatusProps) => (
     <>
         {status && (
             <div
@@ -8,6 +19,6 @@ const AuthSessionStatus = ({ status, className, ...props }) => (
             </div>
         )}
     </>
-)
+);
 
 export default AuthSessionStatus

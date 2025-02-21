@@ -5,7 +5,7 @@ import React from "react";
 
 import RiderApplyHero from "@/components/pages/Career/Rider/RiderApplyHero";
 import RiderApplyDetailBody from "@/components/pages/Career/Rider/RiderApplyDetailBody";
-export default async function RiderJobPage(){
+export default function RiderJobPage(){
     return (
         <div className="w-full ">
 

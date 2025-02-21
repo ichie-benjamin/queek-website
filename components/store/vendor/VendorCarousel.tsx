@@ -20,8 +20,7 @@ interface VendorCarouselProps {
 
 export const VendorCarousel = ({
                                        title,
-                                       endpoint,
-                                       onVendorClick
+                                       endpoint
                                    }: VendorCarouselProps) => {
     const { data: response, isLoading } = useQuery<VendorsResponse>({
         queryKey: ['restaurants', endpoint],
@@ -31,14 +30,14 @@ export const VendorCarousel = ({
     const renderVendors = () => {
         if (isLoading) {
             return Array(6).fill(0).map((_, index) => (
-                <CarouselItem key={index} className="sm:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={index} className="sm:basis-1/2 lg:basis-1/5">
                     <VendorSkeleton />
                 </CarouselItem>
             ));
         }
 
-        return response?.data?.map((vendor) => (
-            <CarouselItem key={vendor.id} className="sm:basis-1/2 lg:basis-1/3">
+        return response?.data?.map((vendor, index) => (
+            <CarouselItem key={vendor.id+index} className="sm:basis-1/2 lg:basis-1/5">
                 <VendorCard
                     vendor={vendor}
                 />

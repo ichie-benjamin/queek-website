@@ -71,7 +71,7 @@ const ServiceSidebar = () => {
             <div>
                 <h3 className="font-semibold mb-4 text-gray-900">Popular filters</h3>
                 <div className="space-y-2">
-                    {popularFilters.map(({ id, label, value }) => (
+                    {popularFilters.map(({ id, label }) => (
                         <Button
                             key={id}
                             variant="outline"

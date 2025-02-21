@@ -5,7 +5,13 @@ export const metadata = {
     title: 'Laravel',
 }
 
-const Layout = ({ children }) => {
+import { ReactNode } from 'react';
+
+interface LayoutProps {
+    children: ReactNode;
+}
+
+const Layout = ({ children }: LayoutProps) => {
     return (
         <div>
             <div className="text-gray-900 antialiased">
@@ -19,7 +25,7 @@ const Layout = ({ children }) => {
                 </AuthCard>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Layout

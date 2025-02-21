@@ -15,8 +15,7 @@ interface VendorGridProps {
 
 export const VendorGrid = ({
                                    title,
-                                   endpoint,
-                                   onVendorClick
+                                   endpoint
                                }: VendorGridProps) => {
 
 
@@ -32,10 +31,13 @@ export const VendorGrid = ({
                 <VendorSkeleton key={index} />
             ));
         }
+        if (!response || !response.data) {
+            return null;
+        }
 
-        return response?.data.map((vendor) => (
+        return response.data.map((vendor) => (
             <VendorCard
-                key={vendor.id}
+                key={vendor.id+'_vendor'}
                 vendor={vendor}
             />
         ));
@@ -43,8 +45,8 @@ export const VendorGrid = ({
 
     return (
         <section className="mb-12">
-            <h2 className="text-2xl font-semibold mb-6">{title}</h2>
-            <div className="grid grid-cols-1 gap-y-4 md:grid-cols-2 lg:grid-cols-3 gap-2">
+            <h2 className="text-xl font-medium mb-6">{title}</h2>
+            <div className="grid grid-cols-1 gap-y-4 md:grid-cols-2 lg:grid-cols-3 md:gap-4 sm:gap-2">
                 {renderVendors()}
             </div>
         </section>

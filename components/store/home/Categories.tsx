@@ -24,7 +24,7 @@ const CategoryCard = ({ service }: CategoryCardProps) => (
     <Link
         href={`store/tag/${service.slug}`}
         className="flex flex-col items-center p-4 bg-white rounded-lg hover:bg-gray-50 cursor-pointer transition-colors h-full"
-        style={{ backgroundColor: `${service.color}20` }}
+        style={{ backgroundColor: `${service.color}40` }} // Increased opacity from 20 to 40
     >
         <div className="w-12 h-12 mb-2">
             <img
@@ -38,7 +38,7 @@ const CategoryCard = ({ service }: CategoryCardProps) => (
 );
 
 const CategorySkeleton = () => (
-    <div className="flex flex-col items-center p-4 bg-white rounded-lg h-full">
+    <div className="flex flex-col items-center p-4 bg-white rounded-lg h-full shadow-sm">
         <Skeleton className="w-12 h-12 rounded-full mb-2" />
         <Skeleton className="h-4 w-20" />
     </div>
@@ -68,14 +68,14 @@ export const Categories = () => {
         .sort((a, b) => a.position - b.position) ?? [];
 
     return (
-        <section className="mb-12">
+        <div className="mx-auto" style={{ maxWidth: '80rem' }}> {/* Using rem value for more precise control */}
             <Carousel
                 opts={{
-                    align: "start",
+                    align: "center",
                     loop: false
                 }}
                 setApi={setApi}
-                className="w-full"
+                className="w-full relative px-8" // Added padding for navigation buttons
             >
                 <CarouselContent className="-ml-2 md:-ml-4">
                     {(isLoading ? Array(7).fill(null) : featuredServices).map((service, index) => (
@@ -87,9 +87,19 @@ export const Categories = () => {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                {canScrollPrev && <CarouselPrevious />}
-                {canScrollNext && <CarouselNext />}
+                {canScrollPrev && (
+                    <CarouselPrevious
+                        className="bg-white/90 hover:bg-white"
+                        style={{ boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)' }}
+                    />
+                )}
+                {canScrollNext && (
+                    <CarouselNext
+                        className="bg-white/90 hover:bg-white"
+                        style={{ boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)' }}
+                    />
+                )}
             </Carousel>
-        </section>
+        </div>
     );
 };

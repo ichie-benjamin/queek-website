@@ -2,13 +2,17 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-
     images: {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'files.chowdeck.com',
-                pathname: '/images/**',
+                hostname: 'queekapp-files.s3.us-east-1.amazonaws.com',
+                pathname: '/photos/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'app.queek.com.ng',
+                pathname: '/**',
             },
         ],
     },

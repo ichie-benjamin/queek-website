@@ -2,18 +2,19 @@ import React, { memo, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { cn } from '@/lib/utils';
 import ProductItem from "@/components/store/ProductItem";
+import {Product} from "@/constants/types/products";
 
 interface SectionProps {
     category: {
         title: string;
-        data: any[];
+        data: Product[];
     };
     isActive: boolean;
     onVisible: (title: string) => void;
-    onOpenModal: (product: any) => void;
+    onOpenModal: (product : Product) => void;
 }
 
-const ProductItemSection = memo(({ category, isActive, onVisible, onOpenModal }: SectionProps) => {
+const ProductItemSection = memo(function ProductItemSection({ category, onVisible, onOpenModal }: SectionProps) {
     const { ref, inView } = useInView({
         threshold: 0.2,
         rootMargin: '-10% 0px -70% 0px'

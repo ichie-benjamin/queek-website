@@ -16,7 +16,7 @@ const WhyUs1 =  () => {
             </div>
 
                 <div className="grid grid-cols-1 px-4 sm:grid-cols-3 mb-16 max-w-[500px] h-full md:max-w-6xl mx-auto justify-center gap-12">
-                    { WHYUS.map((item, index) => (
+                    { WHYUS.map((item) => (
                         <MeteorsCard image={item.icon} key={item.id} title={item.title} description={item.description} metros={5} />
                     ))}
                 </div>

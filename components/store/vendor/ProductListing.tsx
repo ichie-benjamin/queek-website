@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { cn } from '@/lib/utils';
-import { ProductsResponse } from "@/constants/types/products";
+import {Product} from "@/constants/types/products";
 import { getRequest } from "@/lib/axios";
 import { endpoints } from "@/constants/endpoints";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -37,12 +37,34 @@ const LoadingSkeleton = () => (
     </div>
 );
 
+interface ProductsListingProps {
+    vendorId: string;
+    headerSearchQuery: string;
+    onHeaderSearchChange: (query: string) => void;
+    showHeaderSearch: boolean;
+}
 
-const ProductsListing = ({ vendorId }: { vendorId: string }) => {
+interface ProductCategory {
+    title: string;
+    data: Product[];
+}
+
+
+const ProductsListing = ({
+                             vendorId,
+                             headerSearchQuery,
+                             onHeaderSearchChange,
+                             showHeaderSearch
+                         }: ProductsListingProps) => {
+
     const [activeCategory, setActiveCategory] = useState<string>('');
     const [isScrolled, setIsScrolled] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
-    const [selectedProduct, setSelectedProduct] = useState<any>(null);
+    const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
+    useEffect(() => {
+        setSearchQuery(headerSearchQuery);
+    }, [headerSearchQuery]);
 
     // Track scroll position with debounce
     useEffect(() => {
@@ -63,31 +85,39 @@ const ProductsListing = ({ vendorId }: { vendorId: string }) => {
         };
     }, []);
 
-    const { data: products, isLoading } = useQuery<ProductsResponse>({
+
+    const { data: products, isLoading } = useQuery({
         queryKey: ['vendor-products', vendorId],
         queryFn: () => getRequest(`${endpoints.vendors.product}/${vendorId}/products`),
         staleTime: 1000 * 60 * 5, // Cache for 5 minutes
     });
 
-    const hasProducts = products?.data.some(category => category.data.length > 0);
 
+    const hasProducts = products?.data.some((category: ProductCategory) => category.data.length > 0);
 
-    const filteredCategories = React.useMemo(() => {
+    // Handle local search changes
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setSearchQuery(value);
+        onHeaderSearchChange(value); // Sync with header search
+    };
+
+    const filteredCategories: ProductCategory[] = React.useMemo(() => {
         if (!products?.data) return [];
         if (!searchQuery) return products.data;
 
         return products.data
-            .map(category => ({
+            .map((category: ProductCategory) => ({
                 ...category,
-                data: category.data.filter(product =>
+                data: category.data.filter((product: Product) =>
                     product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                     product.description?.toLowerCase().includes(searchQuery.toLowerCase())
                 )
             }))
-            .filter(category => category.data.length > 0);
+            .filter((category: ProductCategory) => category.data.length > 0);
     }, [products?.data, searchQuery]);
 
-    const handleOpenModal = useCallback((product: any) => {
+    const handleOpenModal = useCallback((product : Product) => {
         setSelectedProduct(product);
     }, []);
 
@@ -127,7 +157,7 @@ const ProductsListing = ({ vendorId }: { vendorId: string }) => {
                         "py-4 space-y-0.5 bg-background rounded-lg transition-shadow duration-300",
                         isScrolled && "shadow-md"
                     )}>
-                        {products.data.map((category) => (
+                        {products.data.map((category: ProductCategory) => (
                             <button
                                 key={category.title}
                                 onClick={() => scrollToCategory(category.title)}
@@ -140,8 +170,8 @@ const ProductsListing = ({ vendorId }: { vendorId: string }) => {
                             >
                                 {category.title}
                                 <span className="ml-2 text-xs text-muted-foreground">
-                                    ({category.data.length})
-                                </span>
+            ({category.data.length})
+        </span>
                             </button>
                         ))}
                     </nav>
@@ -152,18 +182,19 @@ const ProductsListing = ({ vendorId }: { vendorId: string }) => {
             {/* Main Content */}
             <div className="flex-1 min-w-0">
                 {/* Search Bar */}
-                {hasProducts && (
-                <div className="sticky top-14 bg-background z-10 pb-4 pt-4">
-                    <div className="relative">
-                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                        <Input
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="pl-10 bg-white dark:bg-darkbox"
-                            placeholder="Search in menu..."
-                        />
+                {hasProducts && !showHeaderSearch && (
+                    <div className="sticky top-14 bg-background z-10 pb-4 pt-4">
+                        <div className="relative">
+                            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                            <Input
+                                value={searchQuery}
+                                onChange={handleSearchChange}
+                                className="pl-10 bg-white dark:bg-darkbox"
+                                placeholder="Search in menu..."
+                            />
+                        </div>
                     </div>
-                </div>) }
+                )}
 
 
 

@@ -38,7 +38,7 @@ const LoadingSkeleton = () => (
     </div>
 );
 
-const Section = ({ category, isActive, onVisible }: SectionProps) => {
+const Section = ({ category,  onVisible }: SectionProps) => {
     const { ref, inView } = useInView({
         threshold: 0.2,
         rootMargin: '-10% 0px -70% 0px'
@@ -79,7 +79,7 @@ const ProductsListing = ({ vendorId }: { vendorId: string }) => {
     const [activeCategory, setActiveCategory] = useState<string>('');
     const [isScrolled, setIsScrolled] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
-    
+
 
     // Track scroll position
     useEffect(() => {
@@ -182,7 +182,7 @@ const ProductsListing = ({ vendorId }: { vendorId: string }) => {
                     ))}
                     {searchQuery && filteredCategories.length === 0 && (
                         <div className="text-center py-12 text-muted-foreground">
-                            No items found matching "{searchQuery}"
+                            No items found matching {searchQuery}
                         </div>
                     )}
                 </div>

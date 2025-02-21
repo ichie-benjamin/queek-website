@@ -18,13 +18,6 @@ export function HomeData() {
     return (
         <>
 
-            {/* Featured Vendors Carousel */}
-            <VendorCarousel
-                title="Featured Restaurants"
-                endpoint={`${endpoints.vendors.list}?featured`}
-                onVendorClick={handleVendorClick}
-            />
-
             {/* Recommended Vendors Carousel */}
             <VendorCarousel
                 title="Recommended for You"

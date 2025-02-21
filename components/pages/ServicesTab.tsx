@@ -87,7 +87,7 @@ const ServicesTab = () => {
     );
 }
 
-const DummyContent = ({image} : { image : any}) => {
+const DummyContent = ({image} : { image : string}) => {
     return (
         <Image
             src={image}

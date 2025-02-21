@@ -70,24 +70,25 @@ export default function ProductModal({ isOpen, onClose, product }: ProductModalP
     const { data: variations, isLoading: isLoadingVariations } = useQuery<ProductVariations>({
         queryKey: ['product-variations', product.id],
         queryFn: () => getRequest(`${endpoints.products.view(product.id)}`),
-        enabled: isOpen && product.variations_count > 0,
+        enabled: isOpen && (product.variations_count ?? 0) > 0, // Added null coalescing
     })
 
     const calculateTotalPrice = useCallback(() => {
-        let total = product.price
+        let total = product.price;
         if (variations?.data.addons) {
             variations.data.addons.forEach(addon => {
-                const selectedItemId = selectedAddons[addon.id]
+                const selectedItemId = selectedAddons[addon.id];
                 if (selectedItemId) {
-                    const selectedItem = addon.items.find(item => item.id === selectedItemId)
+                    const selectedItem = addon.items.find(item => item.id === selectedItemId);
                     if (selectedItem) {
-                        total += selectedItem.price
+                        total += selectedItem.price;
                     }
                 }
-            })
+            });
         }
-        return total * quantity
-    }, [product.price, quantity, selectedAddons, variations])
+        return total * quantity;
+    }, [product.price, quantity, selectedAddons, variations]);
+
 
     const areAllRequiredAddonsSelected = useCallback(() => {
         if (!variations?.data.addons) return true
@@ -236,7 +237,7 @@ export default function ProductModal({ isOpen, onClose, product }: ProductModalP
                             className="flex-1 ml-4"
                             size="lg"
                             onClick={handleAddToCart}
-                            disabled={product.variations_count > 0 &&
+                            disabled={(product.variations_count || 0) > 0 &&
                                 (isLoadingVariations || !areAllRequiredAddonsSelected())}
                         >
                             {isLoadingVariations ?

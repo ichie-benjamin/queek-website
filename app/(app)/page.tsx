@@ -83,7 +83,7 @@ export default function Home() {
                             </h2>
                             <p className="text-base my-4 font-medium">
                                 Queek understands the unique needs of Nigerians.
-                                That's why our platform is finely tuned to cater to your specific preferences,
+                                That&apos;s why our platform is finely tuned to cater to your specific preferences,
                                 ensuring a personalized experience every time you use it.
                             </p>
                             <div className="flex mt-6">
@@ -200,7 +200,7 @@ export default function Home() {
                                 you unlock a world of convenience that spans every aspect
                                 of daily living. From ordering groceries to scheduling
                                 a home cleaning, arranging a car wash, or even settling
-                                utility bills, Queek's empowers you to
+                                utility bills, Queek&apos;s empowers you to
                                 effortlessly tackle your to-do list.
                             </p>
                             <div className="flex mt-6">
@@ -271,7 +271,7 @@ export default function Home() {
                     <h2 className="bold-26 sm:bold-52"><strong className="text-primary">Why Queek</strong></h2>
 
                     <p className="mt-4 text-center mb-6">
-                        Discover why Queek is the solution you've been searching for with these compelling reasons to make it your go-to service platform.
+                        Discover why Queek is the solution you&apos;ve been searching for with these compelling reasons to make it your go-to service platform.
                     </p>
                 </div>
             </div>

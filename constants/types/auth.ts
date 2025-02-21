@@ -63,10 +63,17 @@ export type ApiError = AxiosError<{
 }>
 
 
+import {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
 
-export interface ExtendedAppRouter extends Router {
-    reset?: string
+
+export interface ExtendedAppRouter extends AppRouterInstance {
+    reset?: string;
 }
+
+
+// export interface ExtendedAppRouter extends Router {
+//     reset?: string
+// }
 
 export interface AuthSessionStatusProps {
     status: string | null

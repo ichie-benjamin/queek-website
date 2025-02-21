@@ -41,12 +41,15 @@ const LoginScreen = () => {
     const [errors, setErrors] = useState<ValidationErrors>({})
 
     useEffect(() => {
-        if (router.reset?.length > 0 && Object.keys(errors).length === 0) {
-            setStatus(router.reset ? atob(router.reset) : null)
+        const hasReset = typeof router.reset === 'string' && router.reset.length > 0;
+
+        if (hasReset && Object.keys(errors).length === 0) {
+            setStatus(atob(router.reset as string));
         } else {
-            setStatus(null)
+            setStatus(null);
         }
-    }, [router.reset, errors])
+    }, [router.reset, errors]);
+
 
     const submitForm = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()

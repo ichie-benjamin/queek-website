@@ -3,12 +3,8 @@ import React, {useState} from "react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { cn } from "@/lib/utils";
-import {
-    IconBrandGithub,
-    IconBrandGoogle,
-    IconBrandOnlyfans,
-} from "@tabler/icons-react";
-import {useAuth} from "@/hooks/auth";
+
+// import {useAuth} from "@/hooks/auth";
 // import SelectInput from "@/components/ui/SelectInput";
 
 
@@ -26,26 +22,26 @@ export function SignupFormDemo() {
     };
 
 
-    const { register } = useAuth({
-        middleware: 'guest',
-        redirectIfAuthenticated: '/dashboard',
-    })
+    // const { register } = useAuth({
+    //     middleware: 'guest',
+    //     redirectIfAuthenticated: '/dashboard',
+    // })
 
-    const [selectedVehicle, setSelectedVehicle] = useState(null);
+    const [selectedVehicle] = useState(null);
 
     const [first_name, setFirstName] = useState('')
     const [last_name, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
-    const [password, setPassword] = useState('')
-    const [passwordConfirmation, setPasswordConfirmation] = useState('')
-    const [errors, setErrors] = useState([])
-
-    const items = [
-        { id: '1', name: 'Item 1' },
-        { id: '2', name: 'Item 2' },
-        { id: '3', name: 'Item 3' },
-    ];
+    // const [password, setPassword] = useState('')
+    // const [passwordConfirmation, setPasswordConfirmation] = useState('')
+    // const [errors, setErrors] = useState([])
+    //
+    // const items = [
+    //     { id: '1', name: 'Item 1' },
+    //     { id: '2', name: 'Item 2' },
+    //     { id: '3', name: 'Item 3' },
+    // ];
 
 
     return (

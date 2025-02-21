@@ -17,7 +17,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: UseAuthProps = 
     const router = useRouter()
     const params = useParams()
 
-    const { data: user, error, mutate, retry = 1 } = useSWR<User>('/api/user', () =>
+    const { data: user, error, mutate} = useSWR<User>('/api/user', () =>
         axios
             .get('/api/user')
             .then(res => res.data)

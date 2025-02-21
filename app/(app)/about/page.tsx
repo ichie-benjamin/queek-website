@@ -41,7 +41,7 @@ export default async function AboutPage(){
                                         –we are a movement dedicated to <strong>revolutionizing the way you live your life</strong>.
                                         <br/>Our mission is simple: to make everyday
                                         tasks effortless and to enrich your experiences with unparalleled convenience.
-                                        <br/>Our vision is to create the everything app' for the region, making it effortless for you to move around, order food and groceries, manage payments, and more – all from one powerful platform.
+                                        <br/>Our vision is to create the everything app for the region, making it effortless for you to move around, order food and groceries, manage payments, and more – all from one powerful platform.
 
                                     </p>
                                 </div>
@@ -146,7 +146,7 @@ export default async function AboutPage(){
                                     Are you a business owner?
                                 </h2>
                                 <p className="text-base my-4 font-medium">
-                                    Don't miss out on the opportunity to reach more customers and expand your business with Queek. Join us today and become part of our growing community of vendors committed to delivering excellence to our customers.
+                                    Don&apos;t miss out on the opportunity to reach more customers and expand your business with Queek. Join us today and become part of our growing community of vendors committed to delivering excellence to our customers.
                                 </p>
                                 <div className="flex mt-6">
                                     <LinkButton

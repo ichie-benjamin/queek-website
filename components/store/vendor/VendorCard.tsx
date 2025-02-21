@@ -14,13 +14,12 @@ interface VendorCardProps {
     onClick?: () => void;
 }
 
-export const VendorCard = ({ vendor, onClick }: VendorCardProps) => {
+export const VendorCard = ({ vendor }: VendorCardProps) => {
     const {
         slug,
         name,
         banner,
         rating,
-        distance,
         delivery_info,
         is_closed,
         can_pre_order,
@@ -28,9 +27,9 @@ export const VendorCard = ({ vendor, onClick }: VendorCardProps) => {
     } = vendor;
 
     return (
-        <Link href={`/store/${slug}`}>
+        <Link className="cursor-pointer" href={`/store/${slug}`}>
             <Card className="border-0 rounded-none shadow-none cursor-pointer hover:shadow-none transition-all duration-300">
-                <div className="relative h-40 group">
+                <div className="relative h-36 group">
                     {/* Wrapper div for the image with overflow hidden and border radius */}
                     <div className="absolute inset-0 rounded-lg overflow-hidden">
                         <Image

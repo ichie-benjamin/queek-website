@@ -5,9 +5,10 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { useInView } from 'react-intersection-observer';
 import { useSearchParams } from 'next/navigation';
 import { getRequest } from '@/lib/axios';
-import { VendorsResponse, Vendor } from '@/constants/types/vendor';
+import {Vendor, VendorsResponse} from '@/constants/types/vendor';
 import { VendorCard } from './VendorCard';
 import { VendorSkeleton } from './VendorSkeleton';
+import {logFunction} from "@/lib/utils";
 
 interface VendorGridProps {
     title?: string;
@@ -44,19 +45,24 @@ export const VendorGridList = ({ title, endpoint }: VendorGridProps) => {
         isError,
         error
     } = useInfiniteQuery<PaginatedResponse>({
-        queryKey: ['vendor_listing', endpoint, queryParams],
+        queryKey: ['vendor_list', queryParams],
         queryFn: async ({ pageParam = 1 }) => {
-            const params = new URLSearchParams({ ...queryParams, page: pageParam.toString() });
+            const params = new URLSearchParams({
+                ...queryParams,
+                page: (pageParam as number).toString()
+            });
             const urlWithParams = `${endpoint}${endpoint.includes('?') ? '&' : '?'}${params.toString()}`;
+
             return getRequest(urlWithParams);
         },
+        initialPageParam: 1,
         getNextPageParam: (lastPage) => {
             if (lastPage.meta.current_page >= lastPage.meta.last_page) {
                 return undefined;
             }
             return lastPage.meta.current_page + 1;
         },
-        initialPageParam: 1
+        // initialPageParam: 1
     });
 
     useEffect(() => {
@@ -69,9 +75,11 @@ export const VendorGridList = ({ title, endpoint }: VendorGridProps) => {
     const vendors = data?.pages.flatMap(page => page.data) ?? [];
 
     if (isError) {
+        logFunction('error', error)
+
         return (
             <div className="text-center py-8 text-red-600">
-                Error loading vendors: {error}
+                Error loading vendors
             </div>
         );
     }
@@ -83,10 +91,9 @@ export const VendorGridList = ({ title, endpoint }: VendorGridProps) => {
             ) : null }
 
             <div className="grid grid-cols-1 gap-y-4 md:grid-cols-2 lg:grid-cols-3 gap-2">
-                {vendors.map((vendor) => (
-                    <VendorCard key={vendor.id} vendor={vendor} />
-                ))}
-
+                {vendors && vendors.map((vendor: Vendor | undefined) =>
+                    vendor ? <VendorCard key={vendor.id} vendor={vendor} /> : null
+                )}
                 {isLoading && Array(6).fill(0).map((_, index) => (
                     <VendorSkeleton key={`initial-loading-${index}`} />
                 ))}

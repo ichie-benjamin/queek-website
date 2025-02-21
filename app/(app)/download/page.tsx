@@ -10,7 +10,7 @@ import FAQ from "@/components/pages/FAQ";
 const APP_STORE_URL = 'https://apps.apple.com/app/queek-the-everything-app/id6692619520';
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.queekng.app';
 
-export default async function DownloadPage(){
+export default  function DownloadPage(){
 
     useEffect(() => {
         // Function to detect iOS devices
@@ -63,7 +63,7 @@ export default async function DownloadPage(){
                                     <p className="text-base my-4 font-medium">
                                         Getting started with Queek is easy.
                                         Simply download the app from the App Store or Google Play Store,
-                                        create an account, and you're ready to go.
+                                        create an account, and you&apos;re ready to go.
                                         Join the Queek community today and experience the ultimate
                                         convenience of having everything you need right at your fingertips.
                                     </p>

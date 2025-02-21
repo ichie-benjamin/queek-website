@@ -8,15 +8,15 @@ export function cn(...inputs: ClassValue[]) {
 const isDev = process.env.NODE_ENV === 'development'
 
 
-export const logFunction = (tag, message) => {
-  if (isDev) {
-    console.log(tag, JSON.stringify(message,null, 2))
-  }
-}
+export const logFunction = (tag: string, message: unknown) => {
+    if (isDev) {
+        console.log(tag, JSON.stringify(message, null, 2));
+    }
+};
 
-export const getServiceName = (slug) => {
+export const getServiceName = (slug: string): string => {
     // Handle empty or invalid inputs
-    if (!slug || typeof slug !== 'string') {
+    if (!slug) {
         return '';
     }
 
@@ -35,4 +35,3 @@ export const getServiceName = (slug) => {
     // Join the words back together with spaces
     return formattedWords.filter(word => word).join(' ');
 };
-

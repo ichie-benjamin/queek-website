@@ -74,12 +74,14 @@ export function VendorView({ vendor }: VendorViewProps) {
                 </Breadcrumb>
 
 
-                <VendorHeader vendor={vendor} />
 
 
 
                 <div className="grid grid-cols-12 gap-6">
+
                     <div className="col-span-12 lg:col-span-9">
+                        <VendorHeader vendor={vendor} />
+
                         <ProductsListing
                             vendorId={vendor.id}
                             headerSearchQuery={searchQuery}
@@ -89,7 +91,7 @@ export function VendorView({ vendor }: VendorViewProps) {
                     </div>
 
                     <div className="hidden lg:block lg:col-span-3">
-                        <div className="sticky top-24">
+                        <div className="sticky top-20">
                             <VendorCart vendorId={vendor.id} />
                         </div>
                     </div>

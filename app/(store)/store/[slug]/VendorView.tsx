@@ -75,8 +75,6 @@ export function VendorView({ vendor }: VendorViewProps) {
 
 
 
-
-
                 <div className="grid grid-cols-12 gap-6">
 
                     <div className="col-span-12 lg:col-span-9">

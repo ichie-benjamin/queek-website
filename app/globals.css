@@ -312,3 +312,16 @@ body {
 .rider-bg {
   background-image: url('/images/rider_bg.jpg');
 }
+
+
+/*---break---*/
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

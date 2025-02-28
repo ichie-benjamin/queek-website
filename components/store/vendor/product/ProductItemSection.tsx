@@ -35,7 +35,7 @@ const ProductItemSection = memo(function ProductItemSection({ category, onVisibl
                 inView ? "opacity-100" : "opacity-90"
             )}
         >
-            <h2 className="text-xl font-bold mb-6">{category.title}</h2>
+            <h2 className="text-xl font-bold mb-6 text-foreground dark:text-foreground">{category.title}</h2>
             <div className="grid grid-cols-1 gap-4">
                 {category.data.map((product) => (
                     <ProductItem
@@ -48,6 +48,5 @@ const ProductItemSection = memo(function ProductItemSection({ category, onVisibl
         </section>
     );
 });
-
 
 export default ProductItemSection;

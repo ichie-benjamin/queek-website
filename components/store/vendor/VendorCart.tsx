@@ -1,7 +1,23 @@
-import React, { useMemo, useCallback } from 'react';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ShoppingCart, Minus, Plus, Trash2 } from 'lucide-react';
+"use client"
+
+import React, { useCallback, useMemo } from 'react';
+import {
+    Card,
+    CardContent,
+    CardHeader,
+    CardTitle,
+    CardFooter
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import {
+    Sheet,
+    SheetTrigger,
+    SheetContent,
+    SheetHeader,
+    SheetTitle,
+    SheetClose
+} from "@/components/ui/sheet";
+import { Minus, Plus, ShoppingCart, Trash2, X } from 'lucide-react';
 import { useCartStore } from '@/stores/cartStore';
 
 const EmptyCart = () => (
@@ -13,7 +29,7 @@ const EmptyCart = () => (
         <p className="text-sm text-muted-foreground mb-4">
             Add items from the menu to start your order
         </p>
-        <div className="text-xs text-muted-foreground border-t pt-4 mt-4">
+        <div className="text-xs text-muted-foreground border-t pt-4 mt-4 border-border">
             Free delivery on orders over ₦5,000
         </div>
     </div>
@@ -109,54 +125,142 @@ export function VendorCart({ vendorId }: VendorCartProps) {
     }, [removeItem, updateQuantity]);
 
     return (
-        <Card className="overflow-hidden shadow-sm flex flex-col h-[calc(100vh-7rem)]">
-            <div className="bg-primary/5 py-3 px-4 border-b flex-none">
-                <h3 className="font-semibold">Order Summary</h3>
+        <>
+            {/* Desktop Cart */}
+            <div className="hidden lg:block">
+                <Card className="overflow-hidden shadow-sm flex flex-col h-[calc(100vh-7rem)] border-border bg-card text-card-foreground">
+                    <CardHeader className="bg-primary/5 py-3 px-4 border-b flex-none">
+                        <CardTitle className="font-semibold text-base">Order Summary</CardTitle>
+                    </CardHeader>
+
+                    {vendorItems.length === 0 ? (
+                        <EmptyCart />
+                    ) : (
+                        <>
+                            {/* Scrollable Cart Items */}
+                            <CardContent className="flex-1 overflow-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-gray-100 dark:scrollbar-track-gray-800 p-0">
+                                <div className="p-4 divide-y divide-border">
+                                    {vendorItems.map((item) => (
+                                        <CartItem
+                                            key={item.id}
+                                            {...item}
+                                            onUpdateQuantity={handleUpdateQuantity}
+                                            onRemove={removeItem}
+                                        />
+                                    ))}
+                                </div>
+                            </CardContent>
+
+                            {/* Sticky Cart Summary */}
+                            <CardFooter className="flex-none border-t bg-background p-0">
+                                <div className="p-4 w-full">
+                                    <div className="space-y-2 mb-4">
+                                        <div className="flex justify-between">
+                                            <span className="text-muted-foreground">Subtotal</span>
+                                            <span>₦{total.toLocaleString()}</span>
+                                        </div>
+                                        <div className="flex justify-between">
+                                            <span className="text-muted-foreground">Delivery Fee</span>
+                                            <span>₦0</span>
+                                        </div>
+                                        <div className="flex justify-between font-medium text-lg pt-2 border-t border-border">
+                                            <span>Total</span>
+                                            <span>₦{total.toLocaleString()}</span>
+                                        </div>
+                                    </div>
+
+                                    <Button className="w-full">
+                                        Order {itemCount} {itemCount === 1 ? 'item' : 'items'} for ₦{total.toLocaleString()}
+                                    </Button>
+                                </div>
+                            </CardFooter>
+                        </>
+                    )}
+                </Card>
             </div>
 
-            {vendorItems.length === 0 ? (
-                <EmptyCart />
-            ) : (
-                <>
-                    {/* Scrollable Cart Items */}
-                    <div className="flex-1 overflow-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
-                        <div className="p-4 divide-y">
-                            {vendorItems.map((item) => (
-                                <CartItem
-                                    key={item.id}
-                                    {...item}
-                                    onUpdateQuantity={handleUpdateQuantity}
-                                    onRemove={removeItem}
-                                />
-                            ))}
+            {/* Mobile Sheet (with proper structure) */}
+            {vendorItems.length > 0 && (
+                <Sheet>
+                    {/* Sheet Trigger - The Mobile Fixed Cart Bar */}
+                    <SheetTrigger asChild>
+                        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-primary text-primary-foreground p-4 shadow-lg z-50">
+                            <button className="flex items-center justify-between w-full">
+                                <div className="flex items-center gap-2">
+                                    <ShoppingCart className="h-5 w-5" />
+                                    <span className="font-semibold">{itemCount} {itemCount === 1 ? 'item' : 'items'}</span>
+                                </div>
+                                <span className="font-bold">₦{total.toLocaleString()}</span>
+                            </button>
                         </div>
-                    </div>
+                    </SheetTrigger>
 
-                    {/* Sticky Cart Summary */}
-                    <div className="flex-none border-t bg-background">
-                        <div className="p-4">
-                            <div className="space-y-2 mb-4">
-                                <div className="flex justify-between">
-                                    <span className="text-muted-foreground">Subtotal</span>
-                                    <span>₦{total.toLocaleString()}</span>
+                    {/* Sheet Content */}
+                    <SheetContent
+                        side="right"
+                        className="w-full sm:max-w-md p-0 bg-card text-card-foreground border-l border-border"
+                    >
+                        <SheetHeader className="border-b border-border p-4">
+                            <SheetTitle className="flex justify-between items-center">
+                                <span>Your Order</span>
+                                <SheetClose asChild>
+                                    <Button
+                                        variant="ghost"
+                                        size="icon"
+                                        className="h-8 w-8"
+                                    >
+                                        <X className="h-4 w-4" />
+                                    </Button>
+                                </SheetClose>
+                            </SheetTitle>
+                        </SheetHeader>
+
+                        {vendorItems.length === 0 ? (
+                            <EmptyCart />
+                        ) : (
+                            <div className="flex flex-col h-[calc(100vh-10rem)]">
+                                {/* Scrollable Cart Items */}
+                                <div className="flex-1 overflow-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-gray-100 dark:scrollbar-track-gray-800">
+                                    <div className="p-4 divide-y divide-border">
+                                        {vendorItems.map((item) => (
+                                            <CartItem
+                                                key={item.id}
+                                                {...item}
+                                                onUpdateQuantity={handleUpdateQuantity}
+                                                onRemove={removeItem}
+                                            />
+                                        ))}
+                                    </div>
                                 </div>
-                                <div className="flex justify-between">
-                                    <span className="text-muted-foreground">Delivery Fee</span>
-                                    <span>₦0</span>
-                                </div>
-                                <div className="flex justify-between font-medium text-lg pt-2 border-t">
-                                    <span>Total</span>
-                                    <span>₦{total.toLocaleString()}</span>
+
+                                {/* Sticky Cart Summary */}
+                                <div className="flex-none border-t border-border bg-background">
+                                    <div className="p-4">
+                                        <div className="space-y-2 mb-4">
+                                            <div className="flex justify-between">
+                                                <span className="text-muted-foreground">Subtotal</span>
+                                                <span>₦{total.toLocaleString()}</span>
+                                            </div>
+                                            <div className="flex justify-between">
+                                                <span className="text-muted-foreground">Delivery Fee</span>
+                                                <span>₦0</span>
+                                            </div>
+                                            <div className="flex justify-between font-medium text-lg pt-2 border-t border-border">
+                                                <span>Total</span>
+                                                <span>₦{total.toLocaleString()}</span>
+                                            </div>
+                                        </div>
+
+                                        <Button className="w-full">
+                                            Checkout • ₦{total.toLocaleString()}
+                                        </Button>
+                                    </div>
                                 </div>
                             </div>
-
-                            <Button className="w-full">
-                                Order {itemCount} {itemCount === 1 ? 'item' : 'items'} for ₦{total.toLocaleString()}
-                            </Button>
-                        </div>
-                    </div>
-                </>
+                        )}
+                    </SheetContent>
+                </Sheet>
             )}
-        </Card>
+        </>
     );
 }

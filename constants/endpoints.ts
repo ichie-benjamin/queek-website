@@ -1,5 +1,5 @@
 export const endpoints = {
-    csrf: '/auth/cookie',
+    csrf: '/session',
     auth: {
         login: '/login',
         register: '/register',

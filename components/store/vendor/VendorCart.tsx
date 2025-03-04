@@ -18,7 +18,7 @@ import {
     SheetClose
 } from "@/components/ui/sheet";
 import { Minus, Plus, ShoppingCart, Trash2, X } from 'lucide-react';
-import { useCartStore } from '@/stores/cartStore';
+import {CartStore, useCartStore} from '@/stores/cartStore';
 
 const EmptyCart = () => (
     <div className="text-center py-8 px-4">
@@ -103,9 +103,9 @@ interface VendorCartProps {
 }
 
 export function VendorCart({ vendorId }: VendorCartProps) {
-    const items = useCartStore((state) => state.items);
-    const updateQuantity = useCartStore((state) => state.updateQuantity);
-    const removeItem = useCartStore((state) => state.removeItem);
+    const items = useCartStore((state : CartStore ) => state.items);
+    const updateQuantity = useCartStore((state : CartStore) => state.updateQuantity);
+    const removeItem = useCartStore((state : CartStore) => state.removeItem);
 
     const { vendorItems, total, itemCount } = useMemo(() => {
         const filteredItems = items.filter(item => item.vendor_id === vendorId);

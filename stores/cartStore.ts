@@ -17,7 +17,7 @@ export interface CartItem {
     }>
 }
 
-interface CartStore {
+export interface CartStore {
     items: CartItem[]
     addItem: (item: CartItem) => void
     removeItem: (itemId: string) => void

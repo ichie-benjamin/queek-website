@@ -7,6 +7,9 @@ import {logFunction} from "@/lib/utils";
 import {DEFAULT_LOCATION} from "@/constants/location";
 
 
+export interface AxiosErrorResponse {
+    errors: Record<string, string[]>;
+}
 
 // const axios = Axios.create({
 //     baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
@@ -34,60 +37,6 @@ const axios = Axios.create({
     withXSRFToken: true,
     headers: new Axios.AxiosHeaders(baseHeaders)
 }) as AxiosInstance;
-
-
-// // Simpler location interceptor
-// axios.interceptors.request.use((config) => {
-//     try {
-//         // Access the state directly
-//         const state = locationStore.getState()
-//
-//         // Set headers with fallbacks to defaults
-//         const headers = {
-//             'X-Latitude': state.latitude?.toString() || DEFAULT_LOCATION.latitude.toString(),
-//             'X-Longitude': state.longitude?.toString() || DEFAULT_LOCATION.longitude.toString(),
-//             'X-Region': state.region || DEFAULT_LOCATION.region,
-//             ...(state.address ? { 'X-Address': state.address } : {})
-//         }
-//
-//         // Merge with existing headers
-//         config.headers = {
-//             ...config.headers,
-//             ...headers
-//         } as AxiosRequestHeaders
-//
-//     } catch (error) {
-//         // If there's any issue with the store, use defaults
-//         logFunction('error', error)
-//         config.headers = {
-//             ...config.headers,
-//             'X-Latitude': DEFAULT_LOCATION.latitude.toString(),
-//             'X-Longitude': DEFAULT_LOCATION.longitude.toString(),
-//             'X-Region': DEFAULT_LOCATION.region
-//         } as AxiosRequestHeaders
-//     }
-//
-//     return config
-// })
-//
-// axios.interceptors.response.use(
-//     response => response,
-//     async (error: AxiosError<ApiError>) => {
-//         if (error.response?.status === 419) {
-//             await csrf()
-//             return axios.request(error.config!)
-//         }
-//
-//         if (error.response && error.response?.status === 401) {
-//             useAuthModal.getState().open(() => {
-//                 // Retry the failed request after login
-//                 return axios.request(error.config)
-//             })
-//         }
-//
-//         return Promise.reject(error)
-//     }
-// )
 
 
 axios.interceptors.request.use((config) => {
@@ -129,10 +78,10 @@ axios.interceptors.request.use((config) => {
 axios.interceptors.response.use(
     response => response,
     async (error: AxiosError<ApiError>) => {
-        if (error.response?.status === 419) {
-            await csrf();
-            return axios.request(error.config!);
-        }
+        // if (error.response?.status === 419) {
+        //     await csrf();
+        //     return axios.request(error.config!);
+        // }
 
         if (error.response && error.response?.status === 401) {
             useAuthModal.getState().open(() => {

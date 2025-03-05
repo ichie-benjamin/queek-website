@@ -16,7 +16,17 @@ const nextConfig: NextConfig = {
             },
             {
                 protocol: 'https',
+                hostname: 'queek.s3.eu-north-1.amazonaws.com',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
                 hostname: 'app.queek.com.ng',
+                pathname: '/**',
+            },
+            {
+                protocol: 'http',
+                hostname: 'queekadmin.test',
                 pathname: '/**',
             },
         ],

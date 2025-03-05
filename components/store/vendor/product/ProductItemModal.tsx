@@ -18,8 +18,8 @@ import { getRequest } from "@/lib/axios"
 import { endpoints } from "@/constants/endpoints"
 import { Product } from "@/constants/types/products"
 import { Skeleton } from "@/components/ui/skeleton"
-import {cn} from "@/lib/utils";
-import Image from "next/image";
+import { cn } from "@/lib/utils"
+import Image from "next/image"
 
 interface Addon {
     id: string
@@ -40,6 +40,8 @@ interface ProductModalProps {
     isOpen: boolean
     onClose: () => void
     product: Product
+    vendorName: string
+    vendorSlug: string
 }
 
 interface ProductVariations {
@@ -66,7 +68,7 @@ const AddonSkeleton = () => (
     </div>
 );
 
-export default function ProductModal({ isOpen, onClose, product }: ProductModalProps) {
+export default function ProductModal({ isOpen, onClose, product, vendorName, vendorSlug }: ProductModalProps) {
     const [quantity, setQuantity] = useState(1);
     const [selectedAddons, setSelectedAddons] = useState<AddonSelection>({});
     const addItem = useCartStore(state => state.addItem);
@@ -113,6 +115,8 @@ export default function ProductModal({ isOpen, onClose, product }: ProductModalP
         const cartItem: CartItem = {
             id: product.id,
             vendor_id: product.vendor_id,
+            vendor_title: vendorName || 'Restaurant', // Use passed vendor name
+            vendor_slug: vendorSlug || product.vendor_id, // Use passed vendor slug
             title: product.title,
             price: calculateTotalPrice() / quantity,
             quantity,
@@ -133,7 +137,7 @@ export default function ProductModal({ isOpen, onClose, product }: ProductModalP
         setQuantity(1);
         setSelectedAddons({});
         onClose();
-    }, [product, quantity, selectedAddons, variations, addItem, onClose, calculateTotalPrice, areAllRequiredAddonsSelected]);
+    }, [product, vendorName, vendorSlug, quantity, selectedAddons, variations, addItem, onClose, calculateTotalPrice, areAllRequiredAddonsSelected]);
 
     // Handle Dialog onOpenChange properly
     const handleOpenChange = (open: boolean) => {

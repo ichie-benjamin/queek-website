@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import {
     Dialog,
     DialogContent,
@@ -11,16 +10,20 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { X } from 'lucide-react';
 import Link from 'next/link';
-import axios, {AxiosErrorResponse, csrf} from '@/lib/axios';
+import { AxiosErrorResponse, postRequest, setAuthToken } from '@/lib/axios';
 import { useAuthModal } from '@/stores/useAuthModal';
-import {ValidationErrors} from '@/constants/types/auth';
-import {cn, logFunction} from '@/lib/utils';
-import {AxiosError} from "axios";
+import useUserStore from '@/stores/userStore';
+import { ValidationErrors } from '@/constants/types/auth';
+import { cn, logFunction } from '@/lib/utils';
+import { AxiosError } from "axios";
+import {endpoints} from "@/constants/endpoints";
 
 type AuthStep = 'phone' | 'verify' | 'signup';
 
 export default function AuthModal() {
     const { isOpen, onSuccess, close } = useAuthModal();
+    const setUser = useUserStore(state => state.setUser);
+
     const [step, setStep] = useState<AuthStep>('phone');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [formattedPhoneNumber, setFormattedPhoneNumber] = useState('');
@@ -35,6 +38,28 @@ export default function AuthModal() {
     });
     const [errors, setErrors] = useState<ValidationErrors>({});
     const [isLoading, setIsLoading] = useState(false);
+
+    // Reset state when modal opens/closes
+    useEffect(() => {
+        if (!isOpen) {
+            // Reset all state when modal closes
+            setTimeout(() => {
+                setStep('phone');
+                setPhoneNumber('');
+                setFormattedPhoneNumber('');
+                setOtpCode(['', '', '', '']);
+                setCountdown(0);
+                setUserData({
+                    first_name: '',
+                    last_name: '',
+                    username: '',
+                    email: '',
+                    phone: '',
+                });
+                setErrors({});
+            }, 300); // Small delay to allow animation to finish
+        }
+    }, [isOpen]);
 
     // Format phone input with Nigerian format
     useEffect(() => {
@@ -91,7 +116,6 @@ export default function AuthModal() {
 
     // Handle phone number submission
     const handlePhoneSubmit = async () => {
-        await csrf();
         if (phoneNumber.replace(/\D/g, '').length < 10) {
             setErrors({ phone: ['Please enter a valid phone number'] });
             return;
@@ -106,27 +130,25 @@ export default function AuthModal() {
             // Remove country code if present, or leading zero
             const formattedPhone = cleanPhoneNumber.replace(/^(234|0)/, '');
 
-            const response = await axios.post('/web/auth/check/phone', {
+            const response = await postRequest(endpoints.auth.check_phone, {
                 phone: formattedPhone,
                 sms_type: 'SMS'
             });
 
             // Handle successful response
-            if (response.data.status === 'success') {
+            if (response.status === 'success') {
                 setUserData(prev => ({ ...prev, phone: formattedPhone }));
                 setStep('verify');
                 setCountdown(60); // Start 60-second countdown for OTP resend
 
                 // Auto-fill OTP if provided by backend (for testing/development)
-                if (response.data.data?.auto_verify_code) {
-                    const code = String(response.data.data.auto_verify_code);
+                if (response.data?.auto_verify_code) {
+                    const code = String(response.data.auto_verify_code);
                     const codeArray = code.split('').concat(Array(4 - code.length).fill(''));
                     setOtpCode(codeArray.slice(0, 4));
                 }
             }
-
         } catch (error: unknown) {
-
             const axiosError = error as {response?: {data?: AxiosErrorResponse}};
 
             if (axiosError.response?.data?.errors) {
@@ -152,22 +174,31 @@ export default function AuthModal() {
         setErrors({});
 
         try {
-            const response = await axios.post('/web/auth/verify/phone', {
+            const response = await postRequest(endpoints.auth.verify_phone, {
                 code: fullOtp,
                 phone: userData.phone
             });
 
-            if (response.data.status === 'success') {
-                if (response.data.data.user_exists) {
-                    // User exists, login successful
-                    // Store user data and token in localStorage/store
+            if (response.status === 'success') {
+                // Successfully verified
+                if (response.data?.user_exists && response.data?.token) {
+                    // User exists and token provided - store token
+                    setAuthToken(response.data.token);
+
+                    // Store user data in userStore
+                    if (response.data.user) {
+                        setUser(response.data.user);
+                    }
 
                     // Notify success and close modal
                     onSuccess?.();
                     close();
-                } else {
+                } else if (response.data?.user_exists === false) {
                     // User doesn't exist, move to signup
                     setStep('signup');
+                } else {
+                    // No token or unexpected response
+                    setErrors({ otp: ['Authentication failed. Please try again.'] });
                 }
             } else {
                 setErrors({ otp: ['Verification failed. Please try again.'] });
@@ -196,17 +227,29 @@ export default function AuthModal() {
         setErrors({});
 
         try {
-            const response = await axios.post('/api/auth/register', {
+            const response = await postRequest(endpoints.auth.register, {
                 ...userData,
                 phone: userData.phone
             });
 
-            localStorage.setItem('token', response.data.token);
+            if (response.status === 'success' && response.data) {
+                // Store the token
+                if (response.data.token) {
+                    setAuthToken(response.data.token);
+                }
 
-            // Notify success and close modal
-            onSuccess?.();
-            close();
-        }catch (error) {
+                // Store user data in userStore
+                if (response.data.user) {
+                    setUser(response.data.user);
+                }
+
+                // Notify success and close modal
+                onSuccess?.();
+                close();
+            } else {
+                setErrors({ form: ['Registration succeeded but user data was not received.'] });
+            }
+        } catch (error) {
             const axiosError = error as AxiosError<{
                 errors?: Record<string, string[]>;
             }>;
@@ -228,24 +271,24 @@ export default function AuthModal() {
         setIsLoading(true);
 
         try {
-            const response = await axios.post('/web/auth/check/phone', {
+            const response = await postRequest(endpoints.auth.check_phone, {
                 phone: userData.phone,
                 sms_type: 'SMS'
             });
 
-            if (response.data.status === 'success') {
+            if (response.status === 'success') {
                 setCountdown(60); // Restart countdown
                 setOtpCode(['', '', '', '']); // Reset OTP input
 
                 // Auto-fill OTP if provided by backend (for testing/development)
-                if (response.data.data?.auto_verify_code) {
-                    const code = String(response.data.data.auto_verify_code);
+                if (response.data?.auto_verify_code) {
+                    const code = String(response.data.auto_verify_code);
                     const codeArray = code.split('').concat(Array(4 - code.length).fill(''));
                     setOtpCode(codeArray.slice(0, 4));
                 }
             }
         } catch (error) {
-            logFunction('error', error)
+            logFunction('error', error);
             setErrors({ otp: ['Failed to resend verification code'] });
         } finally {
             setIsLoading(false);
@@ -255,7 +298,7 @@ export default function AuthModal() {
     // Prevent modal from closing when clicking outside
     const handleOpenChange = (open: boolean) => {
         if (!open) {
-            // Don't allow closing by clicking outside
+            // Only allow close via the close button
             return;
         }
     };

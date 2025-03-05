@@ -13,6 +13,7 @@ import ProductItemSection from "@/components/store/vendor/product/ProductItemSec
 import ProductModal from "@/components/store/vendor/product/ProductItemModal";
 import {EmptyProducts} from "@/components/store/vendor/EmptyProducts";
 import {Button} from "@/components/ui/button";
+import {Vendor} from "@/constants/types/vendor";
 
 const LoadingSkeleton = () => (
     <div className="flex gap-6">
@@ -40,6 +41,7 @@ const LoadingSkeleton = () => (
 
 interface ProductsListingProps {
     vendorId: string;
+    vendor?: Vendor;
     headerSearchQuery: string;
     onHeaderSearchChange: (query: string) => void;
     showHeaderSearch: boolean;
@@ -52,7 +54,7 @@ interface ProductCategory {
 
 
 const ProductsListing = ({
-                             vendorId,
+                             vendorId,vendor,
                              headerSearchQuery,
                              onHeaderSearchChange,
                              showHeaderSearch
@@ -289,6 +291,8 @@ const ProductsListing = ({
                         ...selectedProduct,
                         vendor_id: vendorId // Ensure vendor_id is passed
                     }}
+                    vendorName={vendor?.name ?? 'Restaurant'} // Pass only the vendor name
+                    vendorSlug={vendor?.slug ?? vendorId} // Pass only the vendor slug
                 />
             )}
         </div>

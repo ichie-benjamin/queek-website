@@ -2,9 +2,11 @@ export const endpoints = {
     csrf: '/session',
     auth: {
         login: '/login',
-        register: '/register',
+        register: '/auth/register',
         logout: '/logout',
-        user: '/api/user'
+        user: '/api/user',
+        verify_phone: '/web/auth/verify/phone',
+        check_phone: '/auth/check/phone',
     },
 
     products: {

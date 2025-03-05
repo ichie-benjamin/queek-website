@@ -82,6 +82,7 @@ export function VendorView({ vendor }: VendorViewProps) {
 
                         <ProductsListing
                             vendorId={vendor.id}
+                            vendor={vendor}
                             headerSearchQuery={searchQuery}
                             onHeaderSearchChange={setSearchQuery}
                             showHeaderSearch={showSearch}

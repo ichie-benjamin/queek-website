@@ -5,6 +5,8 @@ import { isEqual } from 'lodash'
 export interface CartItem {
     id: string
     vendor_id: string
+    vendor_title: string
+    vendor_slug: string
     title: string
     price: number
     quantity: number
@@ -21,6 +23,7 @@ export interface CartStore {
     items: CartItem[]
     addItem: (item: CartItem) => void
     removeItem: (itemId: string) => void
+    removeItemsByVendor: (vendorId: string) => void // New function to remove all items from a vendor
     updateQuantity: (itemId: string, quantity: number) => void
 }
 
@@ -51,6 +54,11 @@ export const useCartStore = create<CartStore>()(
 
             removeItem: (itemId) => set((state) => ({
                 items: state.items.filter((item) => item.id !== itemId)
+            })),
+
+            // New function to remove all items from a specific vendor
+            removeItemsByVendor: (vendorId) => set((state) => ({
+                items: state.items.filter((item) => item.vendor_id !== vendorId)
             })),
 
             updateQuantity: (itemId, quantity) => set((state) => ({
